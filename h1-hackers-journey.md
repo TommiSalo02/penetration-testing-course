@@ -1,7 +1,7 @@
 # h1 Hacker's journey
 
 Tehtävässä h1 tuli tutkia verkkoskannaamista kahden virtuaalikoneen avulla. 
-Aloitin tehtävän lataamalla toiselle virtuaalikoneelle Kalin (kali-linux-2024.3-live-amd64.iso) ja toiselle Metaspoitablen 2 (metaspoitable-linux 2.0.0.). Latasin Kalin manuaalisesti pre-made vm sijaan, jotta pääsen näkemään mistä on kyse. Kali asensi itsestään Virtual Box Guest Toolit, joka oli mukava ominaisuus.
+Aloitin tehtävän lataamalla toiselle virtuaalikoneelle Kalin (kali-linux-2024.3-live-amd64.iso) ja toiselle Metaspoitablen 2 (metaspoitable-linux 2.0.0.). Latasin Kalin manuaalisesti pre-made vm sijaan, jotta pääsisin näkemään mistä oli kyse. Kali asensi itsestään Virtual Box Guest Toolit, joka oli hyvä ominaisuus.
 
 Parhaan ymmärrykseni mukaan Kali on Linux-distribuutio joka on suunniteltu nimenomaan tunkeutumis- ja tietoturvatestaamiseen. Metaspoitable on tahallisesti hyökkäysaltis virtuaalikone, jonka avulla voi harjoitella erinäisiä hyökkäyksiä. Yhdessä nämä muodostavat hyvän tunkeutumistestausalustan kurssia varten, jossa voi turvallisesti harjoitella.
 
@@ -15,7 +15,7 @@ https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/
 
 ## Kali porttiskannaus
 
-Kali-virtuaalikoneeni sai NAT-verkkokortin kautta yhteyden verkkoon. 
+Ensiksi suoritin porttiskannauksen Kalissa. Tarkistin heti verkon tilan, jotta voisin tehdä skannauksen ilman riskejä.
 
 ![image](https://github.com/user-attachments/assets/3d410b75-5f74-46a2-9424-48617ecc890b)
 
@@ -23,9 +23,9 @@ _Kali-virtuaalikone saí NATin kautta yhteyden verkkoon_
 
 ![image](https://github.com/user-attachments/assets/55e61188-9404-41f8-b99b-a8867a1650a4)
 
-_Yhteyskokeilu toimii_
+_Yhteyskokeilu toimi_
 
-Irroitin tämän kortin ennen porttiskannauksen testaamista, jotta en vahingossa skannaisi muita portteja.
+Katkaisin NAT-yhteyden ennen porttiskannauksen testaamista, jotta en vahingossa skannaisi muita portteja.
 
 ![image](https://github.com/user-attachments/assets/04331c98-272c-48b9-b771-494ecac7ec37)
 
@@ -39,7 +39,7 @@ _Yhteyskokeilu EI toiminut_
 
 _Selain EI toiminut_
 
-Suoritin `nmap -A localhost` porttiskannauksen.
+Suoritin tämän jälkeen `nmap -A localhost` porttiskannauksen.
 
 ![image](https://github.com/user-attachments/assets/a6f92320-91cc-4e05-8a55-0d4cc0564fb4)
 
@@ -55,7 +55,7 @@ Tämän jälkeen pistin molemmat demonit päälle, verkkokortin pois päältä k
 
 _Porttiskannaukset tulokset demonien kera_
 
-Tulokset olivat muuten samat, mutta demonit pitivät portteja 22 (SSH) ja 80 (HTTP) auki omaa toimintaansa varten. Näin myös muuta tietoa, kuten apache2 ja openssh demonien versiot.
+Tulokset olivat muuten samat, mutta demonit pitivät portteja 22 (SSH) ja 80 (HTTP) auki omaa toimintaansa varten. Näin myös muuta tietoa, kuten demonien versiotiedot.
 
 ## Metaspoitable porttiskannaus
 
