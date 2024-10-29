@@ -59,7 +59,41 @@ Tulokset olivat muuten samat, mutta demonit pitivät portteja 22 (SSH) ja 80 (HT
 
 ## Metaspoitable porttiskannaus
 
-Seuraavaksi siirryin metaspoitablen pariin.
+Seuraavaksi siirryin metaspoitablen pariin. Aluksi loin uuden Host-Only Ethernet Adapterin johon kytkin DHCP-palvelimen päälle.
+
+![image](https://github.com/user-attachments/assets/b6afa843-bad9-43d8-bb4b-b40b7aa492fc)
+
+_Uusi Ethernet Adapteri_
+
+Tämän jälkeen asensin Kaliin ja Metaspoitableen verkkokortin joka hyödynsi tätä adapteria. Kalissa säilyy lisäksi NAT-verkkokortti verkkoyhteystä varten.
+
+![image](https://github.com/user-attachments/assets/519fcbb6-0a3c-467f-99b4-67142ea88c4a)
+
+_Kalin verkkokortit_
+
+Seuraavaksi käynnistin molemmat laitteet ja tarkistin, että verkkoyhteys on molemmissa pois päältä. Tämän jälkeen selvitin Metaspoitable-virtuaalikoneen IP-osoitteen komennolla `ifconfig`. Tällä paljastui sen olevan `192.168.82.3`. Nopea ping todisti, että tämä IP-osoite on samassa Host-Only verkossa (ping ei saavuttaisi sitä muuten, sillä verkkoyhteys ei ole päällä).
+
+![image](https://github.com/user-attachments/assets/65fdeb77-782e-4829-b566-4290c6a67a26)
+
+_Metaspoitablen IP-osoite ping_
+
+Seuraavaksi porttiskannasin Metaspoitablen IP-osoitteen `nmap -sn` komennolla ja tarkistin sen olevan oikea osoite verkkoselaimen avulla.
+
+![image](https://github.com/user-attachments/assets/53bc6599-0d58-4e46-a172-af92e6146369)
+
+_Metaspoitable porttiskannaus, verkkoselain_
+
+Lopuksi skannasin vielä Metaspoitablen IP-osoitetta tarkemmin komennolla `nmap -A -p-`. Muutaman minuutin jälkeen sain pitkän syötteen erinäisiä tietoja Metaspoitable-koneesta. Skannattuja portteja oli kokonaisuudessaan 65,535, joista 30 oli auki. ChatGPT osasi nostaa näistä avonaisista porteista kaksi, jotka ovat hyvin haavoittuvaisia hyökkäyksille. Kyseessä olivat portti 21 (FTP) ja portti 1524 (Bindshell)
+
+![image](https://github.com/user-attachments/assets/a5f8b6d4-cbcb-4a7c-af70-21f2513f0fad)
+
+_Portti 21_
+
+![image](https://github.com/user-attachments/assets/4fd13cd1-aed7-4df9-9278-fa8d0d3c44bc)
+
+_Portti 1524_
+
+Portti 21
 
 ## Lähteet
 Valkamo, Tuomas 2022. Hacking into a Target Using Metasploit. https://tuomasvalkamo.com/PenTestCourse/week-2/
