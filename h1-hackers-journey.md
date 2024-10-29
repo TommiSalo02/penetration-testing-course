@@ -47,7 +47,7 @@ _Porttiskannauksen tulokset_
 
 Sain porttiskannauksesta halutut tulokset. Skannaus ei löytänyt DNS-palvelimia, sillä verkkoyhteys oli katki. Se skannasi localhostin laitteen IP-osoitteessa `127.0.0.1`, mutta ei muita laitteita. Skannattu kohde ei sisältänyt avonaisia portteja.
 
-Latasin seuraavaa kohtaa varten kaksi demonia, eli `apache2` ja `openssh`. Tämä tehtiin laittamalla verkkokortti tilapäisesti takaisin päälle ja kommennoilla sudo apt update > sudo apt install openssh-server -y > sudo apt install apache2 -y.
+Latasin seuraavaa kohtaa varten kaksi demonia, eli `apache2` ja `openssh`. Tämä tehtiin laittamalla verkkokortti tilapäisesti takaisin päälle ja kommennoilla `sudo apt update > sudo apt install openssh-server -y > sudo apt install apache2 -y`.
 
 Tämän jälkeen pistin molemmat demonit päälle, verkkokortin pois päältä kokeilujen kera ja lopulta porttiskannasin uudelleen.
 
@@ -59,7 +59,7 @@ Tulokset olivat muuten samat, mutta demonit pitivät portteja 22 (SSH) ja 80 (HT
 
 ## Metaspoitable porttiskannaus
 
-Seuraavaksi sirryyin metaspoitablen pariin.
+Seuraavaksi siirryin metaspoitablen pariin.
 
 ## Lähteet
 Valkamo, Tuomas 2022. Hacking into a Target Using Metasploit. https://tuomasvalkamo.com/PenTestCourse/week-2/
