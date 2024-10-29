@@ -29,11 +29,9 @@ Ensiksi suoritin porttiskannauksen Kalissa. Tarkistin heti verkon tilan, jotta v
 
 _Kali-virtuaalikone saí NATin kautta yhteyden verkkoon_
 
-
 ![image](https://github.com/user-attachments/assets/55e61188-9404-41f8-b99b-a8867a1650a4)
 
 _Yhteyskokeilu toimi_
-
 
 Katkaisin NAT-yhteyden ennen porttiskannauksen testaamista, jotta en vahingossa skannaisi muita portteja.
 
@@ -41,23 +39,19 @@ Katkaisin NAT-yhteyden ennen porttiskannauksen testaamista, jotta en vahingossa 
 
 _Kortti irroitettu_
 
-
 ![image](https://github.com/user-attachments/assets/ff855f17-4aa5-41c2-bfb0-295d02508501)
 
 _Yhteyskokeilu EI toiminut_
 
-
 ![image](https://github.com/user-attachments/assets/500f0763-8851-4487-aee6-9b12316717e5)
 
 _Selain EI toiminut_
-
 
 Suoritin tämän jälkeen `nmap -A localhost` porttiskannauksen.
 
 ![image](https://github.com/user-attachments/assets/a6f92320-91cc-4e05-8a55-0d4cc0564fb4)
 
 _Porttiskannauksen tulokset_
-
 
 Sain porttiskannauksesta halutut tulokset. Skannaus ei löytänyt DNS-palvelimia, sillä verkkoyhteys oli katki. Se skannasi localhostin laitteen IP-osoitteessa `127.0.0.1`, mutta ei muita laitteita. Skannattu kohde ei sisältänyt avonaisia portteja.
 
@@ -80,13 +74,11 @@ Seuraavaksi siirryin metaspoitablen pariin. Aluksi loin uuden Host-Only Ethernet
 
 _Uusi Ethernet Adapteri_
 
-
 Tämän jälkeen asensin Kaliin ja Metaspoitableen verkkokortin joka hyödynsi tätä adapteria. Kalissa säilyy lisäksi NAT-verkkokortti verkkoyhteystä varten.
 
 ![image](https://github.com/user-attachments/assets/519fcbb6-0a3c-467f-99b4-67142ea88c4a)
 
 _Kalin verkkokortit_
-
 
 Seuraavaksi käynnistin molemmat laitteet ja tarkistin, että verkkoyhteys on molemmissa pois päältä. Tämän jälkeen selvitin Metaspoitable-virtuaalikoneen IP-osoitteen komennolla `ifconfig`. Tällä paljastui sen olevan `192.168.82.3`. Nopea ping todisti, että tämä IP-osoite on samassa Host-Only verkossa (ping ei saavuttaisi sitä muuten, sillä verkkoyhteys ei ole päällä).
 
@@ -94,27 +86,28 @@ Seuraavaksi käynnistin molemmat laitteet ja tarkistin, että verkkoyhteys on mo
 
 _Metaspoitablen IP-osoite ping_
 
-
 Seuraavaksi porttiskannasin Metaspoitablen IP-osoitteen `nmap -sn` komennolla ja tarkistin sen olevan oikea osoite verkkoselaimen avulla.
 
 ![image](https://github.com/user-attachments/assets/53bc6599-0d58-4e46-a172-af92e6146369)
 
 _Metaspoitable porttiskannaus, verkkoselain_
 
-
-Lopuksi skannasin vielä Metaspoitablen IP-osoitetta tarkemmin komennolla `nmap -A -p-`. Muutaman minuutin jälkeen sain pitkän syötteen erinäisiä tietoja Metaspoitable-koneesta. Skannattuja portteja oli kokonaisuudessaan 65,535, joista 30 oli auki. ChatGPT osasi nostaa näistä avonaisista porteista kaksi, jotka ovat hyvin haavoittuvaisia hyökkäyksille. Kyseessä olivat portti 21 (FTP) ja portti 1524 (Bindshell)
+Lopuksi skannasin vielä Metaspoitablen IP-osoitetta tarkemmin komennolla `nmap -A -p-`. Muutaman minuutin jälkeen sain pitkän syötteen erinäisiä tietoja Metaspoitable-koneesta. Skannattuja portteja oli kokonaisuudessaan 65,535, joista 30 oli auki. ChatGPT osasi nostaa esimerkekiksi näistä avonaisista porteista kaksi, jotka ovat hyvin haavoittuvaisia hyökkäyksille. Kyseessä olivat portti 21 (FTP) ja portti 1524 (Bindshell)
 
 ![image](https://github.com/user-attachments/assets/a5f8b6d4-cbcb-4a7c-af70-21f2513f0fad)
 
 _Portti 21_
 
-
 ![image](https://github.com/user-attachments/assets/4fd13cd1-aed7-4df9-9278-fa8d0d3c44bc)
 
 _Portti 1524_
 
+Portissa 21 toimii FTP-palvelin `vsftpd`. Tämän palvelimen versio 2.3.4 sisältää haitallisen takaoven, jo
 
-Portti 21
+### Lähteet
 
-## Lähteet
+ChatGPT (Avointen porttien analysointi. Tiedot tarkistettu Metasploitable 2 Exploitability Guide:sta)
+https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/
+
+## Yleiset lähteet
 Valkamo, Tuomas 2022. Hacking into a Target Using Metasploit. https://tuomasvalkamo.com/PenTestCourse/week-2/
