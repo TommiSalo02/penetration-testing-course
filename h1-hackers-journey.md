@@ -5,7 +5,7 @@ Aloitin tehtävän lataamalla toiselle virtuaalikoneelle Kalin (kali-linux-2024.
 
 Parhaan ymmärrykseni mukaan Kali on Linux-distribuutio joka on suunniteltu nimenomaan tunkeutumis- ja tietoturvatestaamiseen. Metaspoitable on tahallisesti hyökkäysaltis virtuaalikone, jonka avulla voi harjoitella erinäisiä hyökkäyksiä. Yhdessä nämä muodostavat hyvän tunkeutumistestausalustan kurssia varten, jossa voi turvallisesti harjoitella.
 
-## Lähteet 
+### Lähteet 
 
 https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/
 
@@ -15,17 +15,17 @@ https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/
 
 ## Kali porttiskannaus
 
-Kali-virtuaalikoneeni saa NAT-verkkokortin kautta yhteyden verkkoon. 
+Kali-virtuaalikoneeni sai NAT-verkkokortin kautta yhteyden verkkoon. 
 
 ![image](https://github.com/user-attachments/assets/3d410b75-5f74-46a2-9424-48617ecc890b)
 
-_Kali-virtuaalikone saa NATin kautta yhteyden verkkoon_
+_Kali-virtuaalikone saí NATin kautta yhteyden verkkoon_
 
 ![image](https://github.com/user-attachments/assets/55e61188-9404-41f8-b99b-a8867a1650a4)
 
 _Yhteyskokeilu toimii_
 
-Irroitetaan tämä kortti ennen porttiskannauksen testaamista, jotta emme vahingossa skannaa muita portteja.
+Irroitin tämän kortin ennen porttiskannauksen testaamista, jotta en vahingossa skannaisi muita portteja.
 
 ![image](https://github.com/user-attachments/assets/04331c98-272c-48b9-b771-494ecac7ec37)
 
@@ -33,11 +33,17 @@ _Kortti irroitettu_
 
 ![image](https://github.com/user-attachments/assets/ff855f17-4aa5-41c2-bfb0-295d02508501)
 
-_Yhteyskokeilu EI toimi_
+_Yhteyskokeilu EI toiminut_
 
 ![image](https://github.com/user-attachments/assets/500f0763-8851-4487-aee6-9b12316717e5)
 
-_Selain EI toimi_
+_Selain EI toiminut_
+
+Suoritin `nmap -A localhost` porttiskannauksen.
+
+![image](https://github.com/user-attachments/assets/a6f92320-91cc-4e05-8a55-0d4cc0564fb4)
+
+_Porttiskannauksen tulokset_
 
 
 
