@@ -13,15 +13,15 @@ Valkamo 2022: Hacking into a Target Using Metasploit: Metasploitable
 
 ## Tiivistykset
 
-Kuuntelin spotifyssa "Herrasmieshakkerit"-podcastin jakson "Haavoittuvuuksien metsästäjä", jossa oli vieraana Harry Sintonen. Sintonen on pitkän linjan hakkeri, joka on löytänyt poikkeuksellisen monta korkean profiilin tietoturvahaavoittuvutta. Jakson sisällön voi tiivistää pariin kohtaan.
+1. Kuuntelin spotifyssa "Herrasmieshakkerit"-podcastin jakson "Haavoittuvuuksien metsästäjä", jossa oli vieraana Harry Sintonen. Sintonen on pitkän linjan hakkeri, joka on löytänyt poikkeuksellisen monta korkean profiilin tietoturvahaavoittuvutta. Jakson sisällön voi tiivistää pariin kohtaan.
 
 -Haavoittuvuudet johtuvat usein vanhentuneista versioista, tietoturvattomista ratkaisuista (esim. ohjelma kyselee ulkoiselta sivulta päivityksiä, joihin voi syöttää pienellä vaivalla omaa koodia) ja vaihtelevasta koodin laadusta (esim. koodi on kirjoitettu monien vuosikymmenien yli tai sen osioita on kirjoittanut kokematon ohjelmoija).
 
 -Tietoturvallisuutta on Sintosen kolmekymmentävuotisen uran aikana parantanut esimerkiksi bug bounty ohjelmat (ohjelmat, jotka palkitsevat virheitä huomaavia henkilöitä rahallisesti), ohjelmakehityksen tason nousu ja ohjelmat, jotka tarkistavat automaattisesti yleisimpiä tietoturvaongelmia. Samalla IoT-ratkaisut ovat varsin tietoturvattomia, joihin toimii usein vanhatkin hyökkäykset.
 
-Hutchinsin kirjassa avattiin vielä tuntimateriaaleissa mainittua "Intrusion Kill Chain" -mallia. Mallissa hyökkäys kostuu seitsemästä vaiheesta, joilla koitetaan saavuttaa ennalta määritetty lopputulos. Hyökkäyksen vaiheet ymmärtämällä voidaan kehittää vasta- ja palautustoimia tietoturvan puolella.
+2. Hutchinsin kirjassa avattiin vielä tuntimateriaaleissa mainittua "Intrusion Kill Chain" -mallia. Mallissa hyökkäys kostuu seitsemästä vaiheesta, joilla koitetaan saavuttaa ennalta määritetty lopputulos. Hyökkäyksen vaiheet ymmärtämällä voidaan kehittää vasta- ja palautustoimia tietoturvan puolella.
 
-O'Reillyn "The Art of Hacking" videot (4.3, 4.4) avaavat aktiivitiedustelua käytännössä.
+3. O'Reillyn "The Art of Hacking" videot (4.3, 4.4) avaavat aktiivitiedustelua käytännössä.
 
 -Nmapin lisäksi Masscan ja Udpprotoscanner ovat hyviä porttiskannaus-työkaluja.
 
@@ -29,7 +29,7 @@ O'Reillyn "The Art of Hacking" videot (4.3, 4.4) avaavat aktiivitiedustelua käy
 
 -Verkon porttiskannaus-työkalujen lisäksi on työkaluja, jotka skannaavat verkkosovelluksia heikkouksien varalta (esim. Nikto, SQLMap)
 
-Finlexin KKO:2003:36 on kokoelma ennakotapauksia porttiskannaamiseen liittyen. Tiivistettynä, Suomessa porttiskannaus tulkitaan useimmiten tunkeutumisyrityksenä itsessään, joka johtaa rahallisiin korvauksiin tai pahimmassa tapauksessa vankituomioon. Täten jopa vahingollinen porttiskannaus voi johtaa oikeustoimiin, jonka vuoksi kannattaa olla varovainen porttiskannausten parissa.
+4. Finlexin KKO:2003:36 on kokoelma ennakotapauksia porttiskannaamiseen liittyen. Tiivistettynä, Suomessa porttiskannaus tulkitaan useimmiten tunkeutumisyrityksenä itsessään, joka johtaa rahallisiin korvauksiin tai pahimmassa tapauksessa vankituomioon. Täten jopa vahingollinen porttiskannaus voi johtaa oikeustoimiin, jonka vuoksi kannattaa olla varovainen porttiskannausten parissa.
 
 ### Lähteet
 
