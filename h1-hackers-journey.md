@@ -7,9 +7,7 @@ Parhaan ymmärrykseni mukaan Kali on Linux-distribuutio joka on suunniteltu nime
 
 ### Lähteet 
 
-https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/
-
-Valkamo 2022: Hacking into a Target Using Metasploit: Metasploitable
+Kali inside VirtualBox (Guest VM). Luettavissa: https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/. Luettu 29.10.2024
 
 ## Tiivistykset
 
@@ -33,11 +31,13 @@ Valkamo 2022: Hacking into a Target Using Metasploit: Metasploitable
 
 ### Lähteet
 
-Hutchins et al 2011: Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains, chapters Abstract, 3.2 Intrusion Kill Chain.
+Hyppönen, M. & Tuominen, T., Herrasmieshakkerit, jakso 23, podcast, Spotify. Luettu. 29.10.2024.
 
-€ Santos et al: The Art of Hacking (Video Collection): 4.3 Surveying Essential Tools for Active Reconnaissance.
+Hutchins et al 2011: Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains, chapters Abstract, 3.2 Intrusion Kill Chain. Luettu 29.10.2024.
 
-KKO 2003:36.
+Santos et al: The Art of Hacking (Video Collection): 4.3, 4.4 Surveying Essential Tools for Active Reconnaissance. Luettu 29.10.2024.
+
+KKO 2003:36. Luettavissa: https://finlex.fi/fi/oikeus/kko/kko/2003/20030036. Luettu: 29.10.2024.
 
 ## Kali porttiskannaus
 
@@ -84,7 +84,7 @@ _Porttiskannaukset tulokset demonien kera_
 
 Tulokset olivat muuten samat, mutta demonit pitivät portteja 22 (SSH) ja 80 (HTTP) auki omaa toimintaansa varten. Näin myös muuta tietoa, kuten demonien versiotiedot.
 
-## Metaspoitable porttiskannaus
+## Metasploitable porttiskannaus
 
 Seuraavaksi siirryin metaspoitablen pariin. Aluksi loin uuden Host-Only Ethernet Adapterin johon kytkin DHCP-palvelimen päälle.
 
@@ -102,15 +102,15 @@ Seuraavaksi käynnistin molemmat laitteet ja tarkistin, että verkkoyhteys on mo
 
 ![image](https://github.com/user-attachments/assets/65fdeb77-782e-4829-b566-4290c6a67a26)
 
-_Metaspoitablen IP-osoite ping_
+_Metasploitablen IP-osoite ping_
 
 Seuraavaksi porttiskannasin Metaspoitablen IP-osoitteen `nmap -sn` komennolla ja tarkistin sen olevan oikea osoite verkkoselaimen avulla.
 
 ![image](https://github.com/user-attachments/assets/53bc6599-0d58-4e46-a172-af92e6146369)
 
-_Metaspoitable porttiskannaus, verkkoselain_
+_Metasploitable porttiskannaus, verkkoselain_
 
-Lopuksi skannasin vielä Metaspoitablen IP-osoitetta tarkemmin komennolla `nmap -A -p-`. Muutaman minuutin jälkeen sain pitkän syötteen erinäisiä tietoja Metaspoitable-koneesta. Skannattuja portteja oli kokonaisuudessaan 65,535, joista 30 oli auki. ChatGPT osasi nostaa esimerkekiksi näistä avonaisista porteista kaksi, jotka ovat hyvin haavoittuvaisia hyökkäyksille. Kyseessä olivat portti 21 (FTP) ja portti 1524 (Bindshell)
+Lopuksi skannasin vielä Metaspoitablen IP-osoitetta tarkemmin komennolla `nmap -A -p-`. Muutaman minuutin jälkeen sain pitkän syötteen erinäisiä tietoja Metaspoitable-koneesta. Skannattuja portteja oli kokonaisuudessaan 65,535, joista 30 oli auki. Metasploitable exploitability -ohjeeseen nojaten osasin nostaa esimerkekiksi näistä avonaisista porteista kaksi, jotka ovat hyvin haavoittuvaisia hyökkäyksille. Kyseessä olivat portti 21 (FTP) ja portti 1524 (Bindshell)
 
 ![image](https://github.com/user-attachments/assets/a5f8b6d4-cbcb-4a7c-af70-21f2513f0fad)
 
@@ -124,8 +124,13 @@ Portissa 21 toimii FTP-palvelin `vsftpd`. Tämän palvelimen versio 2.3.4 sisäl
 
 ### Lähteet
 
-ChatGPT (Avointen porttien analysointi. Tiedot tarkistettu Metasploitable 2 Exploitability Guide:sta)
-https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/
+Valkamo, Tuomas 2022. Hacking into a Target Using Metasploit. Luettavissa: https://tuomasvalkamo.com/PenTestCourse/week-2/. Luettu 29.10.2024.
+
+Metaspoitable exploitability guide. Luettavissa: https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/. Luettu 29.10.2024
 
 ## Yleiset lähteet
-Valkamo, Tuomas 2022. Hacking into a Target Using Metasploit. https://tuomasvalkamo.com/PenTestCourse/week-2/
+
+Pohjana Tero Karvinen 2024: Tunkeutumistestaus -kurssi. Luettavissa: https://terokarvinen.com/tunkeutumistestaus/.
+
+Tätä dokumenttia saa kopioida ja muokata GNU General Public License (versio 2 tai uudempi) mukaisesti. http://www.gnu.org/licenses/gpl.html
+
