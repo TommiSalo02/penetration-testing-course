@@ -120,7 +120,9 @@ _Portti 21_
 
 _Portti 1524_
 
-Portissa 21 toimii FTP-palvelin `vsftpd`. Tämän palvelimen versio 2.3.4 sisältää haitallisen takaoven, jo
+Portissa 21 toimii FTP-palvelin `vsftpd`. Tämän palvelimen versio 2.3.4 sisältää haitallisen takaoven, joka avaa portin 6200, jos kirjautujan käyttäjänimi loppuu hymynaaman `:)`. Samalla anonyyminen kirjautuminen oli sallituna `_ftp-ano`, joka luo uuden läjän tietoturvaongelmia.
+
+Portissa 1524 voi avata etäyhteyden ilman etäyhteyttä, jonka johdosta käyttäjä saa suoraan root-oikeudet. Tämän portin avaaminen on ollut aikaisemmin yleinen tapa lisätä takaovi kompromisoituun palveluun. 
 
 ### Lähteet
 
