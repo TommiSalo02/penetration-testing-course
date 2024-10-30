@@ -124,6 +124,8 @@ Portissa 21 toimii FTP-palvelin `vsftpd`. Tämän palvelimen versio 2.3.4 sisäl
 
 Portissa 1524 voi avata etäyhteyden ilman etäyhteyttä, jonka johdosta käyttäjä saa suoraan root-oikeudet. Tämän portin avaaminen on ollut aikaisemmin yleinen tapa lisätä takaovi kompromisoituun palveluun. 
 
+Nämä portit on jätetty metasploitablessa auki, jotta niitä voisi hyödyntää tunkeutumistestatessa. Molemmat tarjoavat reitin palvelimen kompromisoimiseen.
+
 ### Lähteet
 
 Valkamo, Tuomas 2022. Hacking into a Target Using Metasploit. Luettavissa: https://tuomasvalkamo.com/PenTestCourse/week-2/. Luettu 29.10.2024.
