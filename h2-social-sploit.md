@@ -27,9 +27,15 @@ Seuraavaksi etsin Metasploitablen porttiskannaamalla ja tarkistin olevani oikeas
 
 ![image](https://github.com/user-attachments/assets/49d9b573-0d62-43cd-8d61-04c1686fd9a2)
 
-Aliverkon porttiskannaus
+_Aliverkon porttiskannaus_
 
-192.168.82.0/24
+Aliverkko `192.168.82.0/24` skannattiin ja lopputuloksena 256 IP-osoitteesta vain kaksi oli käytössä, eli Kali osoitteessa `192.168.82.4` ja toinen kone osoitteessa `192.168.82.3`. Nopea Firefox-haku totesi jälkimmäisen osoitteen omaksi Metasploitable-virtuaalikoneeksi.
+
+![image](https://github.com/user-attachments/assets/b5e4c63e-c30a-451a-b11d-1ea532a33242)
+
+_Metasploitablen IP-osoite hakukoneessa._
+
+
 
 ## Yleiset lähteet
 
