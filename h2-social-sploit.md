@@ -6,13 +6,13 @@ Kotitehtävässä h2 tuli jatkaa kokeiluja porttiskannaamisesta (kotitehtävä h
 
 Asensin Metasploitablen ja Kalin sekä HostOnly-ethernetverkon jo aikaisempaa kotitehtävää varten, joten siirryin suoraan tehtävän pariin.
 
-## Tiivistys
+## Tiivistys (kohta X)
 
 
 
 ### Lähteet
 
-## Porttiskannaus
+## Porttiskannaus (kohdat A-F)
 
 Varmistin ensin tuttuun tapaan, että laitteet ovat irti Internetistä ja että ne saavat yhteyden toisiinsa `ping` komennolla. Molemmat virtuaalikoneet ovat HostOnly-verkossa, jonka lisäksi Kali-virtuaalikoneella on NAT-verkkokortti, joka on irroitettu.
 
@@ -35,7 +35,15 @@ Aliverkko `192.168.82.0/24` skannattiin ja lopputuloksena 256 IP-osoitteesta vai
 
 _Metasploitablen IP-osoite hakukoneessa._
 
+TÄYSI SKANNAUS, TALLENUS TIETOIHIN JA VERTAILU, NYT ETEENPÄIN
 
+### Lähteet
+
+## Tunkeutuminen (kohdat G-N)
+
+
+
+### Lähteet
 
 ## Yleiset lähteet
 
