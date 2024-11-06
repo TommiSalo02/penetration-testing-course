@@ -114,11 +114,25 @@ Komento `ipconfig` kertoi lisää koneen verkosta. Sain tätä kautta tietoon al
 
 Lopuksi ajoin komennon `ps`, joka kertoi koneen prosesseista. Huomattavia olivat esimerkiksi `4194 mysqld` josta voisi kaivaa kriittistä dataa, `distccd`, jonka tunnettu heikkous sallii koodin ajamisen etänä sekä `4054 named` eli BIND DNS-palvelin, jotka ovat tunnetusti alttiita hyökkäyksille. Näiden lisäksi prosesseissa on lukuisia muita heikkouksia joiden avulla voisi levittäytyä järjestelmään.
 
+Aikaisemman osion `distccd` on toinen kiinnostava tapa päästä käsiksi koneeseen. Tein ensin hyökkäyksen ja exploittasin sen, kuten aikaisemminkin. Tällä kertaa alkuperäinen payload ei toiminut, joten hain computersecuritystudent oppitunnin verkkosivuilta toisen vaihtoehdon, joka toimi.
+
+![image](https://github.com/user-attachments/assets/88b23cf1-a4db-4c59-b8dc-7350d3b3c03e)
+
+Tämän jälkeen seurasin tuttua Meterpreter-yhteyden muodostamisprosessia, käyttäen aiempi konfigurointeja. Pääsin helposti sisään ja sysinfosta voin päätellä, että ollaan aiemmasta murtautumisesta tutulla paikalla.
+
+![image](https://github.com/user-attachments/assets/d2282d0a-7142-4ddf-aaa3-565fc73fa9bc)
+
+Kokeilin vielä joitain Meterpreterin komentoja ja tallensin näistä login tekstitiedostoon `log001.txt` komennolla  `script -fa log001.txt`.
+
 ### Lähteet
 
 https://www.rapid7.com/db/modules/exploit/unix/ftp/vsftpd_234_backdoor/
 
+https://www.computersecuritystudent.com/SECURITY_TOOLS/METASPLOITABLE/EXPLOIT/lesson2/index.html
+
 https://docs.rapid7.com/metasploit/use-meterpreter-locally-without-an-exploit/
+
+https://www.offsec.com/metasploit-unleashed/meterpreter-basics/
 
 ## Yleiset lähteet
 
