@@ -42,7 +42,7 @@ Aliverkko `192.168.82.0/24` skannattiin ja lopputuloksena 256 IP-osoitteesta vai
 
 _Metasploitablen IP-osoite hakukoneessa._
 
-Seuraavaksi skannasin Metasploitablen perusteellisesti ja tallensin tiedot tarkasteltavaksi. Tämä järjestyy komennolla `db_nmap -A -p- 192.168.82.3` josta `db_` osio tallentaa tulosteen Metasploitablen tietokantoihin ja `-A -p-` spesifoi haun olevan kattava ja koskevan kaikkia portteja. Tämän jälkeen voin käyttää milloin vaan komentoja `hosts` ja `services` skannauksen tuloksien tarkastelua varten. Voin myös suodattaa näistä tuloksista tietoja. Metasploitable ei tunnu tykkäävän `|`, joten käytin komentoa `services -S apache` suodattaakseni vain apacheen liittyvät tulokset.
+Seuraavaksi skannasin Metasploitablen perusteellisesti ja tallensin tiedot tarkasteltavaksi. Tämä järjestyy komennolla `db_nmap -A -p- 192.168.82.3` josta `db_` osio tallentaa tulosteen Metasploitablen tietokantoihin ja `-A -p-` spesifoi haun olevan kattava ja koskevan kaikkia portteja. Tämän jälkeen voin käyttää milloin vaan komentoja `hosts` ja `services` skannauksen tuloksien tarkastelua varten. Voin myös suodattaa näistä tuloksista tietoja. Metasploitable ei tunnu tykkäävän merkistä `|`, joten käytin komentoa `services -S apache` suodattaakseni vain apacheen liittyvät tulokset.
 
 ![image](https://github.com/user-attachments/assets/80d91c19-1abd-409f-8a49-63f64ae7d25c)
 
@@ -51,6 +51,10 @@ _Porttiskannauksen tulosten tarkastelu jälkeenpäin_
 ![image](https://github.com/user-attachments/assets/eafd7ac0-f5cf-4545-95e4-d936b4718780)
 
 _Porttiskannauksen tulosten suodattaminen_
+
+Käytin tämän keinon lisäksi myös komentoa `nmap -A -p- -oA scan_result 192.168.82.3`, joka tallentaa samat tiedot kolmeen eri tiedostoon; `scan_result.nmap`, `scan_result.xml` ja `scan_result.gnmap`. Näistä `.nmap` on nmap tuloste skannauksesta, `.xml` sama tuloste `XML` muodossa ja `.gnmap` on helposti `grep`-komennolla haettava tiedosto.
+
+Näistä skannaustulosteista `db_nmap` on hyvä ja nopea saada Metasploitablen konsoliin tarvittavat tiedot jatkotoimia varten. `nmap -oA` sen sijaan antoi monimuotoisemman tulosteen, jota voi olla helpompi hyödyntää esim. työkaluissa ja skriptaamisessa. Käytin itse mielummin `db_nmap`-tulostetta sen käyttöhelppouden vuoksi kunnes tarvitsin tarkempaa tietoa tai tietoa helpommasti tulkittavassa muodossa.
 
 ### Lähteet
 
@@ -61,4 +65,10 @@ _Porttiskannauksen tulosten suodattaminen_
 ### Lähteet
 
 ## Yleiset lähteet
+
+Pohjana Tero Karvinen 2024: Tunkeutumistestaus -kurssi. Luettavissa: https://terokarvinen.com/tunkeutumistestaus/.
+
+Metaspoitable exploitability guide. Luettavissa: https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/. Luettu 6.11.2024
+
+Tätä dokumenttia saa kopioida ja muokata GNU General Public License (versio 2 tai uudempi) mukaisesti. http://www.gnu.org/licenses/gpl.html
 
