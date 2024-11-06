@@ -122,7 +122,9 @@ Tämän jälkeen seurasin tuttua Meterpreter-yhteyden muodostamisprosessia, käy
 
 ![image](https://github.com/user-attachments/assets/d2282d0a-7142-4ddf-aaa3-565fc73fa9bc)
 
-Kokeilin vielä joitain Meterpreterin komentoja ja tallensin näistä login tekstitiedostoon `log001.txt` komennolla  `script -fa log001.txt`.
+Kokeilin vielä joitain Meterpreterin komentoja kuten `getsystem` ja `hashdump`. Nämä vaativat `priv`-laajennusta toimiakseen, jota en ollut ladannut etukäteen. Muuten pystyin toimia melko vapaasti Metasploitablen shellissä Meterpreterin avulla.
+
+Tallensin lopuksi login tekstitiedostoon `log001.txt` komennolla  `script -fa log001.txt`. Tämä täytyi tehdä ennen msfconsoleen astumista, sillä siellä ei voi suorittaa kaikkia komentoja. `cat` komennolla sain täyden listan tehdyistä komennoista session lopuksi.
 
 ### Lähteet
 
