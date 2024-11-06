@@ -60,9 +60,19 @@ Näistä skannaustulosteista `db_nmap` on hyvä ja nopea saada Metasploitablen k
 
 ## Tunkeutuminen (kohdat G-N)
 
+Seuraavaksi kokeilin murtautua Metasploitableen käyttäen takaovea portissa 21 (`vsftpd`). Pystyin tarkistamaan tämän heikkouden olemassaolon aikaisemmin käytetyllä `services -S`-komennolla. Tämän jälkeen valitsin hyökkyksen sekä maalin ja käskin aloittaa hyökkäyksen `exploit`-komennolla.
+
+![image](https://github.com/user-attachments/assets/95bbeb08-bafa-47ed-b5de-82e796431f30)
+
+_Onnistunut vsftpd hyökkäys_
+
 
 
 ### Lähteet
+
+https://www.rapid7.com/db/modules/exploit/unix/ftp/vsftpd_234_backdoor/
+
+https://docs.rapid7.com/metasploit/use-meterpreter-locally-without-an-exploit/
 
 ## Yleiset lähteet
 
