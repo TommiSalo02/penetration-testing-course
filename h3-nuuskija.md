@@ -22,8 +22,6 @@ Viikon aiheeseen liittyen tuli tiivistää Popovin artikkeli Wiresharkista ja Ka
 
 -Fuzzaamalla voidaan löytää verkkopalvelimesta piilotettuja hakemistoja, joihin ei ole muuten pääsyä.
 
-## Hyökkäys ja sorsastus (Kohdat A-B)
-
 -Ffuf on työkalu, joka suorittaa fuzzaamisen nopeasti ja automaattisesti.
 
 ### Lähde
@@ -31,3 +29,6 @@ Viikon aiheeseen liittyen tuli tiivistää Popovin artikkeli Wiresharkista ja Ka
 Popov 2024: Hacktricks: Wireshark tricks. Luettavissa: https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/pcap-inspection/wireshark-tricks#improve-your-wireshark-skills. Luettu 10.11.2024
 
 Karvinen 2023: Find Hidden Web Directories - Fuzz URLs with ffuf. Luettavissa: https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/. Luettu 10.11.2024
+
+## Hyökkäys ja sorsastus (Kohdat A-B)
+
