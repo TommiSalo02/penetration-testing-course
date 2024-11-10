@@ -18,11 +18,11 @@ Viikon aiheeseen liittyen tuli tiivistää Popovin artikkeli Wiresharkista ja Ka
 
 ### Fuzz URL's with ffuf
 
--Fuzzaamisessa testataan verkkopalvelimen vasteita syöttämällä sille erinäisiä syötteitä (useimmiten satunnaisesti).
+- Fuzzaamisessa testataan verkkopalvelimen vasteita syöttämällä sille erinäisiä syötteitä (useimmiten satunnaisesti).
 
--Fuzzaamalla voidaan löytää verkkopalvelimesta piilotettuja hakemistoja, joihin ei ole muuten pääsyä.
+- Fuzzaamalla voidaan löytää verkkopalvelimesta piilotettuja hakemistoja, joihin ei ole muuten pääsyä.
 
--Ffuf on työkalu, joka suorittaa fuzzaamisen nopeasti ja automaattisesti.
+- Ffuf on työkalu, joka suorittaa fuzzaamisen nopeasti ja automaattisesti.
 
 ### Lähde
 
