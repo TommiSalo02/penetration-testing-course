@@ -53,7 +53,11 @@ Valitettavasti tässä tapauksessa exploit ei saanut yhteyttä kohteeseen. Ohjel
 
 Uusi payload, onnistunut hyökkäys
 
+Lähdekoodi edit, liitteeissä
 
+![image](https://github.com/user-attachments/assets/90a08f4f-7fad-4a41-b817-5fe4c21a4050)
+
+Wireshark ping
 
 ### Lähteet
 
