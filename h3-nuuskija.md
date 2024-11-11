@@ -64,7 +64,8 @@ Metasploit: DistCC Daemon Command Execution. Luettavissa: https://www.rapid7.com
 
 _Liite 1: DistCC lähdekoodi_
 
-`##
+```
+##
 # This module requires Metasploit: https://metasploit.com/download
 # Current source: https://github.com/rapid7/metasploit-framework
 ##
@@ -206,5 +207,5 @@ class MetasploitModule < Msf::Exploit::Remote
     return res
   end
 end
-`
+```
 
