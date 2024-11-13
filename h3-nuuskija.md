@@ -82,7 +82,7 @@ def exploit
 
 Tämän onnistuessa `read_output`-funktio palauttaa kohteen vastauksen komennoille. Lisäksi `dist_cmd`-funktio formatoi annetut komennot muotoon, joka huijaa `Distcc`-työkalun suorittamaan ne.
 
-Lopuksi suoritin vielä hyökkäyksen uudelleen, tällä kertaa pitäen Wiresharkkia päällä toisessa terminaalissa. Verkkoliikenteestä voi arvioida...
+Lopuksi suoritin vielä hyökkäyksen uudelleen, tällä kertaa pitäen Wiresharkkia päällä toisessa terminaalissa. 
 
 ### Lähteet
 
