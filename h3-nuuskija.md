@@ -90,10 +90,6 @@ _TCP-kättely_
 
 Kättelyä seurasi itse hyökkäyksen syöttäminen DistCC:lle (paketit 16, 18, 28). Näissä paketeissa lukee varoitus `Malformed Packet: DTCC`, joka viittaa siihen, että ne tekevät jotain odottamatonta.
 
-![image](https://github.com/user-attachments/assets/7dec5e8d-09bf-4b96-8939-8718d2660e11)
-
-_Hyökkäyspaketit_
-
 Katsoin pakettia 16 tarkemmin napilla `Follow TCP stream`.
 
 ![image](https://github.com/user-attachments/assets/399ad9eb-41a1-441d-8529-8f39f9e52599)
