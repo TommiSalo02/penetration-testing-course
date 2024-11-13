@@ -122,6 +122,7 @@ Lopuksi paketit 30 ja 33 ilmaisevat Stop-napin painamista Wiresharkissa.
 ### Lähteet
 
 Metasploit: Metasploitable 2 Exploitability Guide. Luettavissa: https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/. Luettu 12.11.2024
+
 Metasploit: DistCC Daemon Command Execution. Luettavissa: https://www.rapid7.com/db/modules/exploit/unix/misc/distcc_exec/. Luettu 12.11.2024
 
 ## Fuzz & Ffuf (Kohta D)
