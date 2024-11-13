@@ -183,16 +183,19 @@ Ja siellähän se olikin. Versionhallinta löytyi `.git`-liitteestä lipulla `te
 
 ## HackTheBox (Kohta E)
 
-Lopuksi aloitin vielä HackTheBox-urani "Starting point" osion ensimmäisen koneen ratkaisemisella. Tein tämän harjoitteen kalissa virtuaalikoneellani. Otin käyttäjäsopimuksen talteen ja loin tilin. Kirjauduin sisään ja sunnistin `HTB labs`-osuuteen ja sieltä latasin OpenVPN-palveluun. Liitin koneen terminaalissa VPN-palveluun komennolla `sudo openvpn /home/tommi/Downloads/starting_point_TommiS.ovpn`.
+Lopuksi aloitin vielä HackTheBox-urani "Starting point" osion ensimmäisen koneen ratkaisemisella. Tein tämän harjoitteen kalissa virtuaalikoneellani. Otin aluksi käyttäjäsopimuksen talteen ja loin tilin. Kirjauduin sisään ja sunnistin `HTB labs`-osuuteen ja sieltä latasin OpenVPN-palveluun. 
 
-![image](https://github.com/user-attachments/assets/573ff83a-2abe-4a3e-8fd4-1bbfb0002c20)
-![image](https://github.com/user-attachments/assets/ee7551a3-cbe5-4d50-a8d0-60199d7db4c8)
+Liitin seuraavaksi koneen terminaalissa VPN-palveluun komennolla `sudo openvpn /home/tommi/Downloads/starting_point_TommiS.ovpn`. Tämän jälkeen etsin pienen ikuisuuden tapaa lisätä ja konfiguroida VPN:ää graafisesti. Lopulta löysin `Add a new configuration --> Import a saved VPN configuration`. 
 
-_OpenVPN-yhteys_
+![image](https://github.com/user-attachments/assets/c304484b-3a40-400a-afa9-54eef0420b05)
 
-Tämän jälkeen aloitin ensimmäisen HTB-koneeni ratkaisemisen "Starting point" osiosta.
+_VPN-yhteys luotu_
 
+![image](https://github.com/user-attachments/assets/a7e054c7-801d-4487-b0b5-d8358d483803)
 
+_VPN kytketty päälle_
+
+Testasin vielä yhteyksiä, jotta paketteja ei lähtisi väärille teille. Paketit menivät kuitenkin vielä `ping 8.8.8.8` komennolla läpi. Tehtävän pienen koon ja ongelman luoteen vuoksi en käytä enempää aikaa vianmääritykseen, vaan selvitän tunnilla ja korjaan myöhemmin.
 
 ## Liitteet
 
