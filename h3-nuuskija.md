@@ -47,13 +47,15 @@ _Hyökkäyksen valinta ja konfigurointi_
 
 Tässä vaiheessa hyödyllinen on `show options`-komento, joka näyttää ne parametrit, joita voin konfiguroida. Tässä tapauksessa olennaista on konfiguroida hyökkäyskohde `set RHOST` ja hyökkääjä `set LHOST`.
 
-Valitettavasti tässä tapauksessa exploit ei saanut yhteyttä kohteeseen. Ohjelman antamasta palautteesta pystyin arvioida, että kyse on todennäköisesti virheellisestä payloadista. Metasploit antoi automaattisesti payloadin `cmd/unix/reverse_bash`, mutta tämä ei ole välttämättä oikea.
+Valitettavasti tässä tapauksessa exploit ei saanut yhteyttä kohteeseen. Ohjelman antamasta palautteesta pystyin arvioida, että kyse on todennäköisesti virheellisestä payloadista. 
+
+Metasploit antoi automaattisesti payloadin `cmd/unix/reverse_bash`, mutta tämä ei ole välttämättä oikea. Otin yksinkertaisemman `cmd/unix/reverse` payloadin käyttöön ja hyökkäys onnistui.
 
 ![image](https://github.com/user-attachments/assets/ed899a8b-b887-4df3-9aca-d779c8a5ebed)
 
-Uusi payload, onnistunut hyökkäys
+_Uusi payload, onnistunut hyökkäys_
 
-![image](https://github.com/user-attachments/assets/58b99e93-d83e-4f96-babf-c7d552930f6c)
+Palasin tämän jälkeen vielä tarkastelemaan hyökkäyksen lähdekoodia. Otin sen talteen `edit`-komennolla. Lähdekoodi löytyy raportin "liitteet"-osiosta. Lähdekoodia tarkastellessa voin tehdä omia tulkintoja sen luonteesta...
 
 
 
@@ -61,6 +63,12 @@ Uusi payload, onnistunut hyökkäys
 
 Metasploit: Metasploitable 2 Exploitability Guide. Luettavissa: https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/.
 Metasploit: DistCC Daemon Command Execution. Luettavissa: https://www.rapid7.com/db/modules/exploit/unix/misc/distcc_exec/.
+
+## Fuzz & Ffuf (Kohta D)
+
+## HackTheBox (Kohta E)
+
+## Lähteet
 
 ### Liitteet
 
