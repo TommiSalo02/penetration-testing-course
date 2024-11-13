@@ -57,7 +57,7 @@ _Uusi payload, onnistunut hyökkäys_
 
 Palasin tämän jälkeen vielä tarkastelemaan hyökkäyksen lähdekoodia. Otin sen talteen `edit`-komennolla. Lähdekoodi löytyy raportin "liitteet"-osiosta. Lähdekoodia tarkastellessa voin tehdä omia tulkintoja sen luonteesta...
 
-
+Lopuksi suoritin vielä hyökkäyksen uudelleen, tällä kertaa pitäen Wiresharkkia päällä toisessa terminaalissa. Verkkoliikenteestä voi arvioida...
 
 ### Lähteet
 
@@ -65,6 +65,40 @@ Metasploit: Metasploitable 2 Exploitability Guide. Luettavissa: https://docs.rap
 Metasploit: DistCC Daemon Command Execution. Luettavissa: https://www.rapid7.com/db/modules/exploit/unix/misc/distcc_exec/.
 
 ## Fuzz & Ffuf (Kohta D)
+
+Viikon kotitehtävässä tuli myös harjoitella Fuzzaamista Ffuf työkalulla. Latasin ensin harjoitemaalin `dirfuz-0`, Ffufin ja sanakirjan Kaliin. Tässä vaiheessa oli hyvä hetki vetää verkkokortti VirtualBoxin seinästä, sille emme tarvitse verkkoyhteyttä harjoituksessa. Laajaa pyyntöspämmiä tuskin kannattaa kuitenkaan päästää omasta ympäristöstä verkkoon.
+
+![image](https://github.com/user-attachments/assets/aab04dfd-f0d2-40f6-82c7-570de1392979)
+
+_Harjoitusmaali valmiina_
+
+![image](https://github.com/user-attachments/assets/39d83f97-2e94-49f2-b9d1-d9bcd1bc57e8)
+
+_Ffuf valmiina, kaipaa vain kohdetta_
+
+Löin ensin koko sanalistan läpi verkko-osoitteen päätteeksi `./ffuf -w common.txt -u http://127.0.0.2:8000/FUZZ`. 
+
+![image](https://github.com/user-attachments/assets/a206dc63-87e9-427d-a0f6-78b0abd5f880)
+
+![image](https://github.com/user-attachments/assets/8510891e-21ef-47d7-bbce-4c0e52e5403b)
+
+_/FUZZ tulos_
+
+Tämä ei kuitenkaan vaikuttanut siltä, mitä halusin. Ffuf kävi kyllä läpi 4734 kyselyä, mutta kaikki palauttavat saman 200 status vastauksen (yhteydenotto onnistui). 
+
+Suodatetaan hakuamme vähän tarkemmaksi. Helpointa olisi sulkea pois yleiset vastaukset. Tässä tapauksessa vastauksen koko 132 tavua on yleinen tekijä näissä vastauksissa.
+
+![image](https://github.com/user-attachments/assets/be44f192-a3c6-4130-85ec-90375dd92ca1)
+
+_132 tavun suodatushaku_
+
+Tällä suodatuksella haavin jäi vain kaksi kohdetta. Toisessa HTTP vastaus ei saanut yhteyttä, vaan pyyntömme ohjattiin googlen sivuille. Tämä ei ole suoraan kiinnostavaa tehtävän näkökulmasta. Toinen taas on huomattavan kiinnostava, koska `/FUZZ` löysi päätteen `/admin`. Katsoin tämän osoitteen selaimella ja sehän oli oikea.
+
+![image](https://github.com/user-attachments/assets/8cd2ed6a-2470-49a5-915c-db06f7cdeb37)
+
+_You found it!_
+
+Seuraavaksi lähdin itse kotityötehtävän kohdemaalin `dirfuz-1` pariin.
 
 ## HackTheBox (Kohta E)
 
