@@ -30,7 +30,7 @@ Popov 2024: Hacktricks: Wireshark tricks. Luettavissa: https://book.hacktricks.x
 
 Karvinen 2023: Find Hidden Web Directories - Fuzz URLs with ffuf. Luettavissa: https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/. Luettu 10.11.2024
 
-## Hyökkäys ja sorsastus (Kohdat A-B)
+## Hyökkäys, sorsastus, wireshark (Kohdat A-C)
 
 Aloitin tehtävän tarkistamalla tuttuun tapaan, että koneet saavat yhteyden VAIN toisiinsa HostOnly-verkossa, eivätkä muualle.
 
@@ -55,7 +55,7 @@ Uusi payload, onnistunut hyökkäys
 
 ![image](https://github.com/user-attachments/assets/58b99e93-d83e-4f96-babf-c7d552930f6c)
 
-Lähdekoodi edit, liitteeissä
+
 
 ### Lähteet
 
