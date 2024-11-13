@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/901f102d-c943-4b50-bebe-960de0ab03cb)![image](https://github.com/user-attachments/assets/58b99e93-d83e-4f96-babf-c7d552930f6c)# h3 Nuuskija
+# h3 Nuuskija
 
 ## Johdanto
 
@@ -58,6 +58,10 @@ Lähdekoodi edit, liitteeissä
 ![image](https://github.com/user-attachments/assets/90a08f4f-7fad-4a41-b817-5fe4c21a4050)
 
 Wireshark ping
+
+![image](https://github.com/user-attachments/assets/901f102d-c943-4b50-bebe-960de0ab03cb)
+
+![image](https://github.com/user-attachments/assets/58b99e93-d83e-4f96-babf-c7d552930f6c)
 
 ### Lähteet
 
