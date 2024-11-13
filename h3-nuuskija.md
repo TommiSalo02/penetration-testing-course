@@ -30,7 +30,7 @@ Popov 2024: Hacktricks: Wireshark tricks. Luettavissa: https://book.hacktricks.x
 
 Karvinen 2023: Find Hidden Web Directories - Fuzz URLs with ffuf. Luettavissa: https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/. Luettu 10.11.2024
 
-## Hyökkäys, sorsastus, wireshark (Kohdat A-C)
+## Hyökkäys; sorsa ja hai (Kohdat A-C)
 
 Aloitin tehtävän tarkistamalla tuttuun tapaan, että koneet saavat yhteyden VAIN toisiinsa HostOnly-verkossa, eivätkä muualle.
 
@@ -55,18 +55,43 @@ Metasploit antoi automaattisesti payloadin `cmd/unix/reverse_bash`, mutta tämä
 
 _Uusi payload, onnistunut hyökkäys_
 
-Palasin tämän jälkeen vielä tarkastelemaan hyökkäyksen lähdekoodia. Otin sen talteen `edit`-komennolla. Lähdekoodi löytyy raportin "liitteet"-osiosta. Lähdekoodia tarkastellessa voin tehdä omia tulkintoja sen luonteesta...
+Palasin tämän jälkeen vielä tarkastelemaan hyökkäyksen lähdekoodia. Otin sen talteen `edit`-komennolla. Lähdekoodi löytyy raportin "liitteet"-osiosta. 
+
+DistCC daemon on työkalu, joka on tarkoitettu lähdekoodin kääntämisen nopeuttamiseen jakamalla taakan hajauttamalla sen verkon yli muille koneille. Ongelmaksi muodostuu se, että voimme syöttää tälle työkalulle koodia ilman autentikointia kaikilla sen omaavilla koneilla. Tämä toimii siten, että oikeisiin kompilointi-pyyntöihin voi piilottaa koodia, joka suoritetaan laitteen komentotulkissa.
+
+Lähdekoodissa `check`-funktio lähettää kohteelle satunnaisen syötteen ja pyytää tämän kaiuttamaan sen takaisin.
+
+```
+  sock.put(dist_cmd("sh", "-c", "echo #{r}"))   # Kohde käyttää komentoa "echo" lähettääkseen satunnaisen syötteen takaisin
+  err, out = read_output            # Lukee palautetun syötteen
+  if out && out.index(r)            # Tarkistaa syötteen olevan sama kuin lähetetty syöte
+    return Exploit::CheckCode::Vulnerable # Jos sama, laite on hyökkäysaltis
+  end
+  return Exploit::CheckCode::Safe # Muuten laite on turvassa
+```
+
+Päähyökkäys taas tapahtuu `exploit`-funktiossa, jossa kompromisoitu koodi lähetetään kohteen luettavaksi.
+
+```
+def exploit
+  connect
+
+  distcmd = dist_cmd("sh", "-c", payload.encoded) # Payload syötetään
+  sock.put(distcmd) # Komento syötetään   
+```
+
+Tämän onnistuessa `read_output`-funktio palauttaa kohteen vastauksen komennoille. Lisäksi `dist_cmd`-funktio formatoi annetut komennot muotoon, joka huijaa `Distcc`-työkalun suorittamaan ne.
 
 Lopuksi suoritin vielä hyökkäyksen uudelleen, tällä kertaa pitäen Wiresharkkia päällä toisessa terminaalissa. Verkkoliikenteestä voi arvioida...
 
 ### Lähteet
 
-Metasploit: Metasploitable 2 Exploitability Guide. Luettavissa: https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/.
-Metasploit: DistCC Daemon Command Execution. Luettavissa: https://www.rapid7.com/db/modules/exploit/unix/misc/distcc_exec/.
+Metasploit: Metasploitable 2 Exploitability Guide. Luettavissa: https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/. Luettu 12.11.2024
+Metasploit: DistCC Daemon Command Execution. Luettavissa: https://www.rapid7.com/db/modules/exploit/unix/misc/distcc_exec/. Luettu 12.11.2024
 
 ## Fuzz & Ffuf (Kohta D)
 
-Viikon kotitehtävässä tuli myös harjoitella Fuzzaamista Ffuf työkalulla. Latasin ensin harjoitemaalin `dirfuz-0`, Ffufin ja sanakirjan Kaliin. Tässä vaiheessa oli hyvä hetki vetää verkkokortti VirtualBoxin seinästä, sille emme tarvitse verkkoyhteyttä harjoituksessa. Laajaa pyyntöspämmiä tuskin kannattaa kuitenkaan päästää omasta ympäristöstä verkkoon.
+Viikon kotitehtävässä tuli myös harjoitella Fuzzaamista Ffuf työkalulla. Latasin ensin harjoitemaalin `dirfuz-0`, Ffufin ja sanakirjan Kaliin. Tässä vaiheessa oli hyvä hetki vetää verkkokortti VirtualBoxin seinästä, sille en tarvinnut verkkoyhteyttä harjoituksessa. Laajaa pyyntöspämmiä tuskin kannattaa kuitenkaan päästää omasta ympäristöstä verkkoon.
 
 ![image](https://github.com/user-attachments/assets/aab04dfd-f0d2-40f6-82c7-570de1392979)
 
