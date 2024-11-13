@@ -183,6 +183,17 @@ Ja siellähän se olikin. Versionhallinta löytyi `.git`-liitteestä lipulla `te
 
 ## HackTheBox (Kohta E)
 
+Lopuksi aloitin vielä HackTheBox-urani "Starting point" osion ensimmäisen koneen ratkaisemisella. Tein tämän harjoitteen kalissa virtuaalikoneellani. Otin käyttäjäsopimuksen talteen ja loin tilin. Kirjauduin sisään ja sunnistin `HTB labs`-osuuteen ja sieltä latasin OpenVPN-palveluun. Liitin koneen terminaalissa VPN-palveluun komennolla `sudo openvpn /home/tommi/Downloads/starting_point_TommiS.ovpn`.
+
+![image](https://github.com/user-attachments/assets/573ff83a-2abe-4a3e-8fd4-1bbfb0002c20)
+![image](https://github.com/user-attachments/assets/ee7551a3-cbe5-4d50-a8d0-60199d7db4c8)
+
+_OpenVPN-yhteys_
+
+Tämän jälkeen aloitin ensimmäisen HTB-koneeni ratkaisemisen "Starting point" osiosta.
+
+
+
 ## Liitteet
 
 _Liite 1: DistCC lähdekoodi_
