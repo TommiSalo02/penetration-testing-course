@@ -98,7 +98,27 @@ Tällä suodatuksella haavin jäi vain kaksi kohdetta. Toisessa HTTP vastaus ei 
 
 _You found it!_
 
-Seuraavaksi lähdin itse kotityötehtävän kohdemaalin `dirfuz-1` pariin.
+Seuraavaksi lähdin itse kotityötehtävän kohdemaalin `dirfuz-1` pariin. Latasin harjoitemaalin tuttuun tapaan.
+
+![image](https://github.com/user-attachments/assets/329ebec7-84eb-4b3d-8576-631958bbbe04)
+
+_Dirfuz-1_
+
+Aloitin taas helpoimmasta ja katsoin ensin tyypillisen `./ffuf -w common.txt -u http://127.0.0.2:8000/FUZZ`. Tämän jälkeen lisäsin ehdoiksi `-fs 132 -fs 154`, jotta saisin suodatettua pois yleisimmät vastaukset. Lopputulokseen jäi haaviin kiinnostava vastaus. Katsoin sen tämän jälkeen seilaimella.
+
+![image](https://github.com/user-attachments/assets/247f6a7b-7713-4c7f-bf17-dbf76c051a4c)
+
+![image](https://github.com/user-attachments/assets/0f144031-bea6-4021-a99d-8a759bd87716)
+
+_Lippua esiin_
+
+Sieltä se admin löytyikin lipulla `tero-wpadmin-3364c855a2ac87341fc7bcbda955b580`. Vielä tulisi löytää versionhallintaan liityvä sivu. Aikaisempia suodatustuloksia tarkastaessa liite `.git` herätti kiinnostusta, koska tämä on useimmiten yhteydessä Git repositioon, eli versionhallintaan.
+
+![image](https://github.com/user-attachments/assets/dae39df0-9387-475d-8ec7-c7d60e1c2911)
+
+_Liput taskussa_
+
+Ja siellähän se olikin. Versionhallinta löytyi `.git`-liitteestä lipulla `tero-git-3cc87212bcd411686a3b9e547d47fc51`.
 
 ## HackTheBox (Kohta E)
 
