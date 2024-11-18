@@ -6,4 +6,13 @@ Tehtävässä h4 tuli harjoitella salasanojen murtamista tiivisteistä, jota kä
 
 ## Ennakkomateriaalit
 
+## Fuffme (Kohta C)
+
+Latasin ensin `fuffme`-harjoitusmaalin artikkelissa annettujen ohjeiden mukaan.
+
+![image](https://github.com/user-attachments/assets/5579aff3-f918-4c53-8689-9a7b0edbdb67)
+
+_Harjoitemaali ladattu_
+
+
 ### Lähteet
