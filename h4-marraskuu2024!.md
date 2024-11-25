@@ -11,7 +11,7 @@ https://terokarvinen.com/2022/cracking-passwords-with-hashcat/
 
 ## Hashcat (Kohta A)
 
-Hyödynsin tehtävässä `Hashcat`-työkalua käsittelevää artikkelia. Latasin ensin `Hashcat`-työkalun komennolla `sudo apt-get -y install hashid hashcat wget`. Tämän jälkeen loin uuden hakemiston `hashed`, johon latasin `Rockyou`-sanakirjan.
+Hyödynsin tehtävässä `Hashcat`-työkalua käsittelevää artikkelia. Latasin ensin `Hashcat`-työkalun. Tämän jälkeen loin uuden hakemiston `hashed`, johon latasin `Rockyou`-sanakirjan.
 
 Artikkelissa annetaan esimerkki hash `6b1628b016dff46e6fa35684be6acc96`. Analysoin ensin sen tyypin komennolla `hashid -m`.
 
@@ -27,7 +27,29 @@ _Cracked_
 
 ## John the Ripper (Kohta B)
 
+Seurasin jälleen artikkelin neuvoja `John the Ripper`-työkalun lataamisessa. Latasin ensin työkalun käyttämiseen vaadittavat tiedostot ja sitten itse työkalun. Tämän jälkeen tuli vielä konfiguroida ja kompilata ladatut tiedostot. Onnistuneen latauksen jälkeen testasin käynnistää työkalun komennolla `$HOME/john/run/john `.
 
+![image](https://github.com/user-attachments/assets/83efb739-c295-41e4-b7b5-ffadcb60a3de)
+
+_John the Ripper_
+
+Seuraavaksi latasin artikkelin koe ZIP-tiedoston uuteen hakemistoon `crackfile`. Tämän tiedoston purkaminen vaatii salasanan.
+
+![image](https://github.com/user-attachments/assets/118d3d4b-859b-4e1a-9cac-c07263b4a1fe)
+
+_ZIP-sala_
+
+Seuraavaksi hain salasanasta hash-tiedoston `tero.zip,hash` komennolla `$HOME/john/run/zip2john tero.zip >tero.zip.hash`. John the Ripper osaa käyttää bruteforce-hyökkäystä omalla metodillaan, tai sille voi antaa oman sanakirjan kuten aikaisemmassa hashcat esimerkissä. Tässä tapauksessa annoin John the Ripperin tehdä hommansa komennolla `$HOME/john/run/john tero.zip.hash `.
+
+![image](https://github.com/user-attachments/assets/39de5d8a-36ae-4e67-a772-6d176034b92e)
+
+_Perhonen_
+
+Testasin vielä löytämääni salasanaa `butterfly` tiedoston purkamisessa.
+
+![image](https://github.com/user-attachments/assets/c683b319-f046-4fa7-9917-317f2b4051dd)
+
+_Cracked!_
 
 ## Fuffme (Kohta C)
 
