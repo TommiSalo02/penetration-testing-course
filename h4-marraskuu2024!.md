@@ -59,21 +59,19 @@ Latasin ensin `fuffme`-harjoitusmaalin artikkelissa annettujen ohjeiden mukaan. 
 
 _Harjoitemaali ladattu_
 
-## Tiiviste (Kohta F)
+## Tiiviste ja tiedosto (Kohdat E & F)
 
-Tätä osuutta varten loin uuden käyttäjän kaliin (Hasher) ja annoin sille salasanan `Hasher123!`. Seuraavaksi hain käyttäjän salasanan hashin kansiosta `/etc/shadow`. Salasanan hash oli:
+Käytin tätä tehtävää varten `OpenSSL`-työkalun enkryptointia. Tämä on nopea ja helppo tapa luoda enkryptoituja tiedostoja eri formaateilla.
 
-![image](https://github.com/user-attachments/assets/91824281-a22c-49c1-9880-4f0b6aff67e6)
+Loin ensin hash-tiedoston salasanasta `Table12!`.
 
-_cat /etc/shadow_
-
-Vein tämän salasanan uudessa kansiossa `hashfiles` tekstitiedostoon `hasher.txt` seuraavaa vaihetta varten,
-
-![image](https://github.com/user-attachments/assets/537b0a01-50a6-4837-be76-17631e106bb7)
-
-_hasher.txt_
+![image](https://github.com/user-attachments/assets/cb2b114f-efdd-478b-9b44-c8d5bbaa2495)
 
 
+
+![image](https://github.com/user-attachments/assets/15b90408-919f-4d49-ad1d-95c196e3cabc)
 
 
 ### Lähteet
+
+https://www.geeksforgeeks.org/blockchain-encrypt-decrypt-files-with-password-using-openssl/
