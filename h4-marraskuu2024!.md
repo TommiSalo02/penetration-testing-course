@@ -59,18 +59,43 @@ Latasin ensin `fuffme`-harjoitusmaalin artikkelissa annettujen ohjeiden mukaan. 
 
 _Harjoitemaali ladattu_
 
-## Tiiviste ja tiedosto (Kohdat E & F)
+## Tiedosto (Kohta E)
 
-Käytin tätä tehtävää varten `OpenSSL`-työkalun enkryptointia. Tämä on nopea ja helppo tapa luoda enkryptoituja tiedostoja eri formaateilla.
+Loin ensiksi tiedoston `topsecret.txt`, jonka suojasin `GPG`-työkalulla komennolla `gpg --symmetric --cipher-algo AES256 topsecret.txt`. Annoin tiedostolle salasanaksi `password123`.
 
-Loin ensin hash-tiedoston salasanasta `Table12!`.
+Tämän jälkeen pystyin ottaa tästä tiedostosta tiivisteen käyttämällä Johnia komennolla `gpg2john topsecret.txt.gpg > gpghash.txt`. Tämän jälkeen pääsen murtamaan salasanaa hyödyntäen Johnia ja `rockyou.txt`-sanalistaa komennolla `john --wordlist=rockyou.txt gpghash.txt`. Sain tällä metodilla salasanan ratkaistua 2 minuutissa ja 22 sekunnissa.
 
-![image](https://github.com/user-attachments/assets/cb2b114f-efdd-478b-9b44-c8d5bbaa2495)
+![image](https://github.com/user-attachments/assets/f941e5a3-3048-49f3-8a45-6b7bfd4c3716)
 
+_Password cracked!_
 
+![image](https://github.com/user-attachments/assets/8385b776-d1e3-419b-9dab-e36da649505b)
 
-![image](https://github.com/user-attachments/assets/15b90408-919f-4d49-ad1d-95c196e3cabc)
+_topsecret.txt_
 
+## Tiiviste (Kohta F)
+
+Käytin tätä tehtävää varten `OpenSSL`-työkalun enkryptointia. Tämä oli nopea ja helppo tapa luoda enkryptoituja tiedostoja eri formaateilla.
+
+Loin ensin hash-tiedoston salasanasta `alpha1`. Tämä salasana olo vähän monimutkaisempi kuin `summer` lisätyn numeron takia, mutta uskoin sen murtuvan kuitenkin melko nopeasti.
+
+Selvitin myös salasanan olevan salattu `SHA-512`-avaimella käyttämällä `hashid`-työkalua.
+
+![image](https://github.com/user-attachments/assets/a7c1054e-b8b3-4c9d-8465-1bc15fadf2de)
+
+_Enkryptaus ja murto_
+
+Tämä salasana kesti hieman pidempään, eli 13 sekunttia.
+
+![image](https://github.com/user-attachments/assets/4b2e617e-2fa4-41da-8fae-061a72a55b9d)
+
+_alpha1 cracked_
+
+Lisäämällä vielä ison alkukirjaimen (Alpha1) prosessi venyi jo noin 12 minuutin tienoille.
+
+![image](https://github.com/user-attachments/assets/37882f3d-f475-4411-b56d-8cf9996ce68b)
+
+_Alpha1 cracked_
 
 ### Lähteet
 
