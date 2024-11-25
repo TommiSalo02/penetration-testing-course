@@ -53,11 +53,26 @@ _Cracked!_
 
 ## Fuffme (Kohta C)
 
-Latasin ensin `fuffme`-harjoitusmaalin artikkelissa annettujen ohjeiden mukaan.
+Latasin ensin `fuffme`-harjoitusmaalin artikkelissa annettujen ohjeiden mukaan. Tässä kohtaa tuli ladata vaadittavat tiedostot, luoda Docker container ja käynnistää maali komennolla `sudo docker run -d -p 80:80 ffufme`.
 
 ![image](https://github.com/user-attachments/assets/5579aff3-f918-4c53-8689-9a7b0edbdb67)
 
 _Harjoitemaali ladattu_
+
+## Tiiviste (Kohta F)
+
+Tätä osuutta varten loin uuden käyttäjän kaliin (Hasher) ja annoin sille salasanan `Hasher123!`. Seuraavaksi hain käyttäjän salasanan hashin kansiosta `/etc/shadow`. Salasanan hash oli:
+
+![image](https://github.com/user-attachments/assets/91824281-a22c-49c1-9880-4f0b6aff67e6)
+
+_cat /etc/shadow_
+
+Vein tämän salasanan uudessa kansiossa `hashfiles` tekstitiedostoon `hasher.txt` seuraavaa vaihetta varten,
+
+![image](https://github.com/user-attachments/assets/537b0a01-50a6-4837-be76-17631e106bb7)
+
+_hasher.txt_
+
 
 
 ### Lähteet
