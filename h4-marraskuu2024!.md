@@ -53,11 +53,57 @@ _Cracked!_
 
 ## Fuffme (Kohta C)
 
-Latasin ensin `fuffme`-harjoitusmaalin artikkelissa annettujen ohjeiden mukaan. Tässä kohtaa tuli ladata vaadittavat tiedostot, luoda Docker container ja käynnistää maali komennolla `sudo docker run -d -p 80:80 ffufme`.
+Latasin ensin `fuffme`-harjoitusmaalin artikkelissa annettujen ohjeiden mukaan. Tässä kohtaa tuli ladata vaadittavat tiedostot, luoda Docker container ja käynnistää maali komennolla `sudo docker run -d -p 80:80 ffufme`. Sanalistat ja ffuf löytyivät jo entuudestaan aikaisempien tehtävien vuoksi.
 
 ![image](https://github.com/user-attachments/assets/5579aff3-f918-4c53-8689-9a7b0edbdb67)
 
 _Harjoitemaali ladattu_
+
+Seuraavaksi aloin tekemään harjoitteita kohta kohdalta.
+
+Kohdassa "Basic" käytettiin yksinkertaisesti yleisten sanojen listaa sivuston osoitteen perässä, jotta voisimme löytää piiloitettuja sivuja. Fuzzaukseen vastasi `class` ja `development.log` sivut, joissa piili tehtävän ratkaisu.
+
+![image](https://github.com/user-attachments/assets/f27f3e90-ce08-491a-9f1a-26aeb60a608b)
+
+![image](https://github.com/user-attachments/assets/d2648efc-c7dc-426e-ab29-8c5454bc61b1)
+
+Kohdassa "Recursion" käytettiin samaa sanalistaa, mutta rekursiivisesti. Tämä tarkoittaa sitä, että Fuzzaus löytää kohteen, ja tekee seuraavan haun sen kohteen sisällä. Näin päädyin `/admin`-sivun löytämisestä `/admin/users/96`-sivulle, joka oli tehtävän ratkaisu.
+
+![image](https://github.com/user-attachments/assets/846578bf-3d23-4ec1-ab17-e8c4ca29c6cb)
+
+![image](https://github.com/user-attachments/assets/1bba996b-3f39-4fc9-a9e6-3d3c5f459df5)
+
+Kohdassa "File Extensions" käytettiin komentoa `-e .log`, joka lisäsi Fuzzauksen perään liitteen `.log`. Tämän avulla voin kaivaa `/log`-sivulta `/logs/users.log`-tiedoston.
+
+![image](https://github.com/user-attachments/assets/91e619cf-0c9b-4743-bf4b-b5b141449145)
+
+![image](https://github.com/user-attachments/assets/4433e956-d8b6-4203-a90f-ef4a1850d2fe)
+
+Kohdassa "No 404 Status" komento `ffuf -w ~/wordlists/common.txt -u http://localhost/cd/no404/FUZZ` palautti pitkän listan sivuja, jotka väittävät saaneensa yhteydenoton.
+
+![image](https://github.com/user-attachments/assets/ff2a46ff-b4ec-4746-9157-58d19e9773c4)
+
+Tarkastuksen jälkeen nämä eivät kuitenkaan olleet saavutettavissa. Kaikki tämänkaltaiset tiedostot olivat 669 tavun kokoisia, joten ratkaisuna oli käyttää komentoa `-fs 669` näiden vastausten suodattamiseen.
+
+![image](https://github.com/user-attachments/assets/2a1da8fc-89b0-4327-bbb3-e3cfcd2d41cb)
+
+![image](https://github.com/user-attachments/assets/d9637389-7ee2-4bb0-844f-f67e499b5b1c)
+
+Kohdassa "Param Mining" sivu `http://localhost/cd/param/data` palauttaa vastauksen `Required Parameter Missing`. Tässä tapauksessa voin käyttää sanalistaa `parameters.txt` oikean parametrin löytämiseksi.
+
+![image](https://github.com/user-attachments/assets/5e70ff45-c226-4f63-a91e-a85f6149b802)
+
+![image](https://github.com/user-attachments/assets/91c99e2e-83f1-4587-a1c6-816870377ca5)
+
+Kohdassa "Rate Limited" komento `ffuf -w ~/wordlists/common.txt -u http://ffuf.test/cd/rate/FUZZ -mc 200,429` törmää nopeasti ongelmaan. Sivustossa kyselyiden määrä on rajoitettu, joten 200 (yhteys hyväksytty) tulokset muuttuvat nopeasti 429 (kyselyt rajoitettu). Tämän välttämiseksi voimme rajoittaa kyselyiden määrää, jonka avulla löysin `oracle`-sivun.
+
+![image](https://github.com/user-attachments/assets/6b6bfd42-d05a-4c62-9310-744d3a4367d0)
+
+Kohdassa "Virtual Host Enumeration" käytin aliverkkojen tunnistamiseen `subdomains.txt`-sanalistaa. Tyypilliseen tapaan suodatin yleisen tuloksen, joka oli tässä tapauksessa 1495 tavun kokoiset vastaukset. Tällä tapaa löysin aliverkon `redhat.ffuf.me`.
+
+![image](https://github.com/user-attachments/assets/949470f7-32a4-4ec5-802e-a4c1a18c1a39)
+
+
 
 ## Tiedosto (Kohta E)
 
