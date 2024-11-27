@@ -122,11 +122,28 @@ _Kuva pyyntö, oma payload_
 
 ![image](https://github.com/user-attachments/assets/88b12634-56ee-4af4-8a70-ed7f642d29db)
 
-_Tiedot hallussa
+_Tiedot hallussa_
 
 ![image](https://github.com/user-attachments/assets/991ceec2-0503-4551-a94b-032546e9f6fc)
 
 _Simple FPT ratkaistu_
+
+Labra `File path traversal, traversal sequences blocked with absolute path bypass` on pitkälti samanlainen kuin aikaisempi, mutta tässä tapauksessa voimme siirtyä suoraan `/etc/passwd`-kansioon, sillä sitä ei oltu suojattu mitenkään.
+
+![image](https://github.com/user-attachments/assets/911daf16-494e-4c7f-8282-55ab037d16b2)
+
+![image](https://github.com/user-attachments/assets/f910e7ac-23cd-4451-9660-af8beb1bcc44)
+
+![image](https://github.com/user-attachments/assets/a6511f7b-45db-46bb-9eff-43c949e62adf)
+
+![image](https://github.com/user-attachments/assets/f0a0ee3e-71b2-4102-b431-8a03a7ac8286)
+
+Labra `File path traversal, traversal sequences stripped non-recursively` seurasi samaa mallia, mutta sisälsi oman erikoisuutensa. Tässä tapauksessa palvelin osasi suodattaa niin suoran hyökkäyksen `/etc/passwd` kuin aikaisemman kiertoreitin `../../../etc/passwd`. Harmillisesti syötteeseen voi kuitenkin lisätä enemmän osia; `....//....//....//etc/passwd`. Tällöin järjestelmä kyllä suodattaa `../`-osuuden, mutta jäljelle jää vielä toinen samanlainen.
+
+![image](https://github.com/user-attachments/assets/c6f33574-8f62-4cba-87a7-43ff0907133f)
+
+![image](https://github.com/user-attachments/assets/763eb9cd-6f3e-4204-ad91-37b54c4d4136)
+
 
 
 ## Pencode (Kohta K)
