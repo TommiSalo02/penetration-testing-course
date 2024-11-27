@@ -108,17 +108,21 @@ _IDOR ratkaistu_
 
 ## File Path Traversal (Kohdat D-F)
 
-Labra `File path traversal, simple case` avautuu samanlaisessa kauppasivussa kuin kohdassa C. Tällä kertaa vain kuvia voi klikata. Tehtävänä on löytää `/etc/passwd` ja näpistää sen sisällöt. Kuvaa klikatessa syntyy liikennettä. Kiinnostavasti sivusto hakee kuvaa tiedostonimellä (tässä tapauksessa `25.jpg`). 
-
-![image](https://github.com/user-attachments/assets/3381bcfc-21aa-47f8-8758-4d3e4d558bac)
-
-Tämä on altis hyökkäykselle, sillä sivusto luottaa käyttäjän antavan validin parametrin tiedostonimelle. Tosiasiassa voimme luoda oman pyynnöön omalla parametrilla `../../../../etc/passwd`, joka pyrkii navigoimaan haluttuun kansioon. Parametri `../` kiipeää takaisin ylös tiedostopuuta, jotta voisimme päätyä `/etc/`-kansioon.
+Labra `File path traversal, simple case` avautuu samanlaisessa kauppasivussa kuin kohdassa C. Tällä kertaa vain kuvia voi klikata. Tehtävänä on löytää `/etc/passwd` ja näpistää sen sisällöt. Kuvaa klikatessa syntyy liikennettä. Kiinnostavasti sivusto hakee kuvaa tiedostonimellä (tässä tapauksessa `18.jpg`). 
 
 ![image](https://github.com/user-attachments/assets/8f8d3c9e-5a5b-42dc-8131-50489df2c0fe)
 
+_Kuva pyyntö_
+
+Tämä on altis hyökkäykselle, sillä sivusto luottaa käyttäjän antavan validin parametrin tiedostonimelle. Tosiasiassa voimme luoda oman pyynnöön omalla parametrilla `../../../../etc/passwd`, joka pyrkii navigoimaan haluttuun kansioon. Parametri `../` kiipeää takaisin ylös tiedostopuuta, jotta voisimme päätyä `/etc/`-kansioon.
+
 ![image](https://github.com/user-attachments/assets/951c589d-27b2-4369-b788-d6b51bb6b4bf)
 
+_Kuva pyyntö, oma payload_
+
 ![image](https://github.com/user-attachments/assets/88b12634-56ee-4af4-8a70-ed7f642d29db)
+
+_Tiedot hallussa
 
 ![image](https://github.com/user-attachments/assets/991ceec2-0503-4551-a94b-032546e9f6fc)
 
