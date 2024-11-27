@@ -62,11 +62,11 @@ Lopuksi tuli vielä sallia kuvien sieppaaminen.
 
 ![image](https://github.com/user-attachments/assets/b258d395-7be2-4f69-bd42-076e00eca66c)
 
-ZAP kuuntelee oletusasetuksilla yhteyksien varalta paikallisesti, joka toimii tässä tapauksessa.
+ZAP kuunteli oletusasetuksilla yhteyksien varalta paikallisesti, joka toimi tässä tapauksessa.
 
 ![image](https://github.com/user-attachments/assets/1fe036e1-0de8-457c-8ad9-177da1ca9de2)
 
-Konfiguroin seuraavaksi FoxyProxyn toimimaan ZAP:in kanssa. Voin käyttää `patterns`-osiota hyväksymään liikenteen proxyn kautta vain silloin, kun sen lähde täsmää annettua vaatimusta. Täten vältetään liikenne ZAP:iin ulkoisista lähteistä. 
+Konfiguroin seuraavaksi FoxyProxyn toimimaan ZAP:in kanssa. Käytin `patterns`-osiota hyväksymään liikenteen proxyn kautta vain silloin, kun sen lähde täsmää annettua vaatimusta. Täten vältin liikenteen ZAP:iin ulkoisista lähteistä. 
 
 ![image](https://github.com/user-attachments/assets/a006c06d-d175-45b4-b17a-c64b299e070e)
 
@@ -74,15 +74,15 @@ Käynnistin tämän jälkeen selaimen uudelleen ja kokeilin käyttää ZAP:iä l
 
 ![image](https://github.com/user-attachments/assets/09ff8a7e-debc-46b3-b12b-7de2c11505fc)
 
-Lopputuloksissa näkyy, että `localhost` antaa vastauksen `502 - Bad Gateway`, koska siellä ei ole mitään. Metasploitable on antanut muutaman timeoutin, mutta oikean yhteyden kytkiessä se antaa positiivisen `200 - OK` vastauksen. Wikipedia on myös auki, mutta mikään liikenne ei tule sieltä proxyn kautta, sillä sitä ei ole sallitu patterneissa.
+Lopputuloksissa näkyi, että `localhost` antoi vastauksen `502 - Bad Gateway`, koska siellä ei ollut mitään. Metasploitable oli antanut muutaman timeoutin, mutta oikean yhteyden kytkiessä se antoi positiivisen `200 - OK` vastauksen. Wikipedia oli myös auki, mutta mikään liikenne ei tullut sieltä proxyn kautta, sillä sitä ei oltu sallitu patterneissa.
 
 ## PortSwigger Labsc& IDOR (Kohta C)
 
 Tässä osiossa tein vaaditut harjoitukset PortSwigger Labs:istä. Tämä on palvelu, jossa voi turvallisesti harjoitella käytännössä erilaisia verkkosovellushyökkäyksiä.
 
-Muokkasin ensin ProxyFoxy:ä siten, että se käyttää Proxya ainoastaan harjoitemaaliympäristössä. 
+Muokkasin ensin ProxyFoxy:ia siten, että se käyttää Proxya ainoastaan harjoitemaaliympäristössä. 
 
-Labratilojen URL-osoite sisältää `web-security-academy.net` ja tätä ei käytetä muualla PortSwiggerin sivuilla. Täten FoxyProxyn asetus `http://*.web-security-academy.net/*` & `https://*.web-security-academy.net/*` varmistaa, että en vahingossa käytä proxy-yhteyttä muualla kuin labrassa.
+Labratilojen URL-osoite sisälsi `web-security-academy.net` ja tätä ei käytetä muualla PortSwiggerin sivuilla. Täten FoxyProxyn asetus `http://*.web-security-academy.net/*` & `https://*.web-security-academy.net/*` varmistaa, että en vahingossa käyttänyt proxy-yhteyttä muualla kuin labrassa.
 
 ![image](https://github.com/user-attachments/assets/61f018b9-2606-4b25-958a-0c675e9e44d2)
 
@@ -92,7 +92,7 @@ Käytin seuraavissa tehtävissä vinkkejä tarvittaessa, mutta pyrin nojautumaan
 
 Kohdassa `Insecure direct object references` tuli löytää käyttäjän `carlos` salasana ja kirjautua sisään heidän tunnuksillaan. Labran etusivu on tunkeutujan kannalta melko tylsä verkkokauppasivu. Ainoat linkit jotka menevät minnekkään ovat `My account`, joka menee kirjautumissivulle ja `Live chat`, joka menee chat-palveluun.
 
-Chat-palvelussa viestin lähettäminen ei tee mitään, mutta `View transcript` lataa tyhjän tekstitiedoston koneelle. Tekstitiedosto on kuitenkin kiinnostavasti nimeltään `2.txt`, eli `1.txt` tai `0.txt` on jo käytetty jossain. Tämä vihjasi IDOR-heikkouteen, jossa voisin nähdä muiden käyttäjien tietoja muuttamalla `.txt`-tiedoston muuttujaa. 
+Chat-palvelussa viestin lähettäminen ei tehnyt mitään, mutta `View transcript` latasi tyhjän tekstitiedoston koneelle. Tekstitiedosto oli kuitenkin kiinnostavasti nimeltään `2.txt`, eli `1.txt` tai `0.txt` oli jo käytetty jossain. Tämä vihjasi IDOR-heikkouteen, jossa voisin nähdä muiden käyttäjien tietoja muuttamalla `.txt`-tiedoston muuttujaa. 
 
 ZAP:ia tarkastaessa näkyi, että olin lähettänyt pyynnön `GET https://0af500eb030b6a47823f700d000e0054.web-security-academy.net/download-transcript/2.txt HTTP/1.1`. Jos chatti-logeja voi pyytää näin yksinkertaisesti, niin mitä jos lähetän saman pyynnön, mutta tällä kertaa `1.txt` osalta?
 
@@ -108,13 +108,13 @@ _IDOR ratkaistu_
 
 ## File Path Traversal (Kohdat D-F)
 
-Labra `File path traversal, simple case` avautuu samanlaisessa kauppasivussa kuin kohdassa C. Tällä kertaa vain kuvia voi klikata. Tehtävänä on löytää `/etc/passwd` ja näpistää sen sisällöt. Kuvaa klikatessa syntyy liikennettä. Kiinnostavasti sivusto hakee kuvaa tiedostonimellä (tässä tapauksessa `18.jpg`). 
+Labra `File path traversal, simple case` avautuu samanlaisessa kauppasivussa kuin kohdassa C. Tällä kertaa vain kuvia voi klikata. Tehtävänä oli löytää `/etc/passwd` ja näpistää sen sisällöt. Kuvaa klikatessa syntyi liikennettä. Kiinnostavasti sivusto haki kuvaa tiedostonimellä (tässä tapauksessa `18.jpg`). 
 
 ![image](https://github.com/user-attachments/assets/8f8d3c9e-5a5b-42dc-8131-50489df2c0fe)
 
 _Kuva pyyntö_
 
-Tämä on altis hyökkäykselle, sillä sivusto luottaa käyttäjän antavan validin parametrin tiedostonimelle. Tosiasiassa voimme luoda oman pyynnöön omalla parametrilla `../../../../etc/passwd`, joka pyrkii navigoimaan haluttuun kansioon. Parametri `../` kiipeää takaisin ylös tiedostopuuta, jotta voisimme päätyä `/etc/`-kansioon.
+Tämä oli altis hyökkäykselle, sillä sivusto luottaa käyttäjän antavan validin parametrin tiedostonimelle. Tosiasiassa voin luoda oman pyynnöön omalla parametrilla `../../../../etc/passwd`, joka pyrki navigoimaan haluttuun kansioon. Parametri `../` kiipeää takaisin ylös tiedostopuuta, jotta voisimme päätyä `/etc/`-kansioon.
 
 ![image](https://github.com/user-attachments/assets/951c589d-27b2-4369-b788-d6b51bb6b4bf)
 
@@ -128,7 +128,7 @@ _Tiedot hallussa_
 
 _Simple FPT ratkaistu_
 
-Labra `File path traversal, traversal sequences blocked with absolute path bypass` on pitkälti samanlainen kuin aikaisempi, mutta tässä tapauksessa voimme siirtyä suoraan `/etc/passwd`-kansioon, sillä sitä ei oltu suojattu mitenkään.
+Labra `File path traversal, traversal sequences blocked with absolute path bypass` oli pitkälti samanlainen kuin aikaisempi, mutta tässä tapauksessa voimn siirtyä suoraan `/etc/passwd`-kansioon, sillä sitä ei oltu suojattu mitenkään.
 
 ![image](https://github.com/user-attachments/assets/911daf16-494e-4c7f-8282-55ab037d16b2)
 
@@ -202,6 +202,12 @@ _Hups_
 
 ## Pencode (Kohta K)
 
+Kohdassa K tuli ladata vielä `Pencode`-työkalu ja muuntaa sillä jokin merkkijono. Latasin Pencoden github-repositiosta, purin tiedoston `tar`-komennolla ja siirsin sen `usr/local/bin`-hakemistoon. Lopulta kokeilin käyttää sitä.
+
 ![image](https://github.com/user-attachments/assets/71f8e114-50b3-4233-88c6-35926b551994)
 
 ## Yleiset Lähteet
+
+Pohjana Tero Karvinen 2024: Tunkeutumistestaus -kurssi. Luettavissa: https://terokarvinen.com/tunkeutumistestaus/.
+
+Tätä dokumenttia saa kopioida ja muokata GNU General Public License (versio 2 tai uudempi) mukaisesti. http://www.gnu.org/licenses/gpl.html
