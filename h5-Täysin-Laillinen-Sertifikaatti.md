@@ -202,4 +202,6 @@ _Hups_
 
 ## Pencode (Kohta K)
 
+![image](https://github.com/user-attachments/assets/71f8e114-50b3-4233-88c6-35926b551994)
+
 ## Yleiset Lähteet
