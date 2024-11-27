@@ -80,7 +80,31 @@ Lopputuloksissa näkyy, että `localhost` antaa vastauksen `502 - Bad Gateway`, 
 
 Tässä osiossa tein vaaditut harjoitukset PortSwigger Labs:istä. Tämä on palvelu, jossa voi turvallisesti harjoitella käytännössä erilaisia verkkosovellushyökkäyksiä.
 
-Muokkasin ensin ProxyFoxy:ä siten, että se käyttää Proxya ainoastaan harjoitemaaliympäristössä. Pistin ensin kaikki työkalut pois päältä ja navigoin labratilaan. Labratilojen URL osoite sisältää `web-security-academy.net` ja tätä ei käytetä muualla PortSwiggerin sivuilla. Täten FoxyProxyn asetus `https://*.web-security-academy.net/*` varmistaa, että en vahingossa käytä proxy-yhteyttä muualla kuin labrassa.
+Muokkasin ensin ProxyFoxy:ä siten, että se käyttää Proxya ainoastaan harjoitemaaliympäristössä. 
+
+Labratilojen URL-osoite sisältää `web-security-academy.net` ja tätä ei käytetä muualla PortSwiggerin sivuilla. Täten FoxyProxyn asetus `http://*.web-security-academy.net/*` & `https://*.web-security-academy.net/*` varmistaa, että en vahingossa käytä proxy-yhteyttä muualla kuin labrassa.
+
+![image](https://github.com/user-attachments/assets/61f018b9-2606-4b25-958a-0c675e9e44d2)
+
+_Labraa kaappaa, etusivua ei_
+
+Käytin seuraavissa tehtävissä vinkkejä tarvittaessa, mutta pyrin nojautumaan aikaisempaan ennakkomateriaaliin jo tietämykseen, tai uuden tiedon etsimiseen.
+
+Kohdassa `Insecure direct object references` tuli löytää käyttäjän `carlos` salasana ja kirjautua sisään heidän tunnuksillaan. Labran etusivu on tunkeutujan kannalta melko tylsä verkkokauppasivu. Ainoat linkit jotka menevät minnekkään ovat `My account`, joka menee kirjautumissivulle ja `Live chat`, joka menee chat-palveluun.
+
+Chat-palvelussa viestin lähettäminen ei tee mitään, mutta `View transcript` lataa tyhjän tekstitiedoston koneelle. Tekstitiedosto on kuitenkin kiinnostavasti nimeltään `2.txt`, eli `1.txt` tai `0.txt` on jo käytetty jossain. Tämä vihjasi IDOR-heikkouteen, jossa voisin nähdä muiden käyttäjien tietoja muuttamalla `.txt`-tiedoston muuttujaa. 
+
+ZAP:ia tarkastaessa näkyi, että olin lähettänyt pyynnön `GET https://0af500eb030b6a47823f700d000e0054.web-security-academy.net/download-transcript/2.txt HTTP/1.1`. Jos chatti-logeja voi pyytää näin yksinkertaisesti, niin mitä jos lähetän saman pyynnön, mutta tällä kertaa `1.txt` osalta?
+
+![image](https://github.com/user-attachments/assets/cf2e35e4-17c4-4baa-9cd4-74e342ac0316)
+
+_Bingo_
+
+Kokeilin saamaani salasanaa vielä kirjautumisnäytössä. Pääsin kirjautumaan tilille ja vaihtamaan tilin sähköpostin. Kiitos tilistä carlos!
+
+![image](https://github.com/user-attachments/assets/a381773f-a431-4adf-ba9a-39b4a9c13844)
+
+_IDOR ratkaisu_
 
 
 
