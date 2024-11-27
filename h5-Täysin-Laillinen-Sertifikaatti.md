@@ -132,17 +132,29 @@ Labra `File path traversal, traversal sequences blocked with absolute path bypas
 
 ![image](https://github.com/user-attachments/assets/911daf16-494e-4c7f-8282-55ab037d16b2)
 
+_Ei toimi?_
+
 ![image](https://github.com/user-attachments/assets/f910e7ac-23cd-4451-9660-af8beb1bcc44)
+
+_Suoraan vaan kansioon_
 
 ![image](https://github.com/user-attachments/assets/a6511f7b-45db-46bb-9eff-43c949e62adf)
 
+_Siellähän se on_
+
 ![image](https://github.com/user-attachments/assets/f0a0ee3e-71b2-4102-b431-8a03a7ac8286)
+
+_Ratkaistu!_
 
 Labra `File path traversal, traversal sequences stripped non-recursively` seurasi samaa mallia, mutta sisälsi oman erikoisuutensa. Tässä tapauksessa palvelin osasi suodattaa niin suoran hyökkäyksen `/etc/passwd` kuin aikaisemman kiertoreitin `../../../etc/passwd`. Harmillisesti syötteeseen voi kuitenkin lisätä enemmän osia; `....//....//....//etc/passwd`. Tällöin järjestelmä kyllä suodattaa `../`-osuuden, mutta jäljelle jää vielä toinen samanlainen.
 
 ![image](https://github.com/user-attachments/assets/c6f33574-8f62-4cba-87a7-43ff0907133f)
 
+_Huijattu!_
+
 ![image](https://github.com/user-attachments/assets/763eb9cd-6f3e-4204-ad91-37b54c4d4136)
+
+_Ratkaistu._
 
 ## SSTI (Kohta G)
 
@@ -154,13 +166,15 @@ Videon mukaisesti komennolla `{{a'toUpperCase()}}` saa virheilmoituksen, joka ke
 
 ![image](https://github.com/user-attachments/assets/7c986ef5-b68b-4240-be01-6aa5d70e9766)
 
-Djangossa komento `{% debug %}` antoi minun nähdä kaikki saatavilla olevat resurssit.
+Djangossa komento `{% debug %}` antoi minun nähdä kaikki saatavilla olevat resurssit. Seuraavaksi voin käyttää `{{ settings }}`-komentoa päästäkseni käsiksi sala-avaimeen.
 
 ![image](https://github.com/user-attachments/assets/976b112f-5ab3-4ee9-b69c-18abe75abf90)
 
+_Sala-avain_
+
 ![image](https://github.com/user-attachments/assets/1a95bf5c-26e1-4528-9e08-3eed82071f7a)
 
-
+_Läpi meni_
 
 ## SSRF (Kohta H)
 
@@ -176,9 +190,13 @@ Samaan tapaan kuin aikaisemminkin, voimme lähettää oman pyynnön uusilla para
 
 ![image](https://github.com/user-attachments/assets/7a069824-edb1-4fd0-b80f-143697626dce)
 
+_Adminit löytyivät_
+
 Localhost pyyntö toi minut paikalliselle puolelle, jossa löysin HTML:stä admin paneelin. Komennolla `http://localhost/admin/delete?username=carlos`, saadaan pikaisesti pyyhittyä pois carloksen tili. Nämä toimivat, sillä palvelua ei oltu varmistettu paikallisesti ja sille puolelle pääsi yksinkertaisella väärällä pyynnöllä.
 
 ![image](https://github.com/user-attachments/assets/ed3ad226-e7bf-445e-b134-b6f2a554bdcc)
+
+_Näkemiin, carlos_
 
 ## XSS (Kohdat I & J)
 
@@ -188,13 +206,19 @@ Suuntasin luontaisesti ensimmäiseen syöttökenttään minkä näin ja pastesin
 
 ![image](https://github.com/user-attachments/assets/ea1c0751-c166-45aa-a9fd-2a0e9102b624)
 
+_1!_
+
 ![image](https://github.com/user-attachments/assets/e68a28fe-d4d7-4720-a080-8f54f996237c)
+
+_Siinähän se oli_
 
 Tämä toimi, sillä käyttäjän syötteet pyörivät suoraan javascriptinä eikä niitä suodateta.
 
 Seuraavassa labrassa `Stored XSS into HTML context with nothing encoded` ei ollut samanlaista hakukenttää mihin syöttää komentoa. Klikkaamalla artikkelia sai kuitenkin kommenttikentän näkyviin. Syötteen muodolla ei ole oikeastaan väliä jos haavoittuvuus on yhä sama.
 
 ![image](https://github.com/user-attachments/assets/d98619b6-d902-4704-953f-8098704f911d)
+
+_Mun kommentti :)_
 
 ![image](https://github.com/user-attachments/assets/28878ff7-a57c-408d-a725-a7c185397c71)
 
