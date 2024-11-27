@@ -2,7 +2,7 @@
 
 ### Johdanto
 
-Tehtävässä h5 tuli harjoitella...
+Tehtävässä h5 tuli harjoitella webbipalveluihin murtautumista ja ohessa tuli vastaan työkaluja kuten `OWASP ZAP`, `Foxyproxy` ja `Pencode`. Harjoitukset tehtiin `PortSwigger`-harjoittelutilassa. En ollut tällä viikolla oppitunnilla, joten aihe oli aloittaessa vieras.
 
 ## Ennakkomateriaalit
 
@@ -24,19 +24,19 @@ PortSwigger:in artikkelissa "Cross-site scripting" käsiteltiin hyökkäystä, j
 
 ### Lähteet
 
-https://owasp.org/Top10/A01_2021-Broken_Access_Control/
+OWASP Foundation 2021: A01: Broken Access Control. Luettavissa: https://owasp.org/Top10/A01_2021-Broken_Access_Control/. Luettu 28.11.2024.
 
-https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery/
+OWASP Foundation 2021: A10: Server-Side Request Forgery (SSRF). Luettavissa: https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery/. Luettu 28.11.2024.
 
-https://portswigger.net/web-security/access-control/idor
+PortSwigger Ltd: Access Control - Insecure Direct Object References (IDOR). Luettavissa: https://portswigger.net/web-security/access-control/idor. Luettu 28.11.2024.
 
-https://portswigger.net/web-security/file-path-traversal
+PortSwigger Ltd: File Path Traversal. Luettavissa: https://portswigger.net/web-security/file-path-traversal. Luettu 28.11.2024.
 
-https://portswigger.net/web-security/server-side-template-injection
+PortSwigger Ltd: Server-Side Template Injection. Luettavissa: https://portswigger.net/web-security/server-side-template-injection. Luettu 28.11.2024.
 
-https://portswigger.net/web-security/ssrf
+PortSwigger Ltd: Server-Side Request Forgery (SSRF). Luettavissa: https://portswigger.net/web-security/ssrf. Luettu 28.11.2024.
 
-https://portswigger.net/web-security/cross-site-scripting
+PortSwigger Ltd: Cross-Site Scripting (XSS). Luettavissa: https://portswigger.net/web-security/cross-site-scripting. Luettu 28.11.2024.
 
 ## Sertifikaatti kettuilua (Kohdat A & B)
 
