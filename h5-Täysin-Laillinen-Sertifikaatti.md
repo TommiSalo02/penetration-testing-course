@@ -60,15 +60,17 @@ _Firefox proxy localhost_
 
 Seuraavaa osuutta varten kytkin netin pois ja tein huolelliset yhteyskokeilut, jotta liikennettä ei karkaisi pois sisäverkosta. Lisäksi seuraavat asetukset FoxyProxyssa varmistavat, että proxya ei käytetä näiden osoitteiden ulkopuolella (localhost ja Metasploitable)
 
+![image](https://github.com/user-attachments/assets/a0bd277c-96cd-4913-97a7-fb82bb07b2b6)
+
+_ProxyFoxy asetukset_
+
 Kokeilin näillä asetuksilla yhteyttä Metasploitableen ja localhostiin. Localhost palautti vastauksen `502`, koska siellä ei ole mitään. Metasploitable taas palautti vastauksen `200`, eli yhteyskokeilu onnistui.
 
 ![image](https://github.com/user-attachments/assets/0e4426ae-4830-4af8-bad9-895ca4803e8d)
 
-_Metasploitable ja ZAP_
+_Metasploitable ja localhost_
 
 Pystyin hyödyntämään myös FoxyProxya localhost liikenteen tallettamiseksi.
-
-
 
 ## PortSwigger Labs (Kohdat C-J)
 
