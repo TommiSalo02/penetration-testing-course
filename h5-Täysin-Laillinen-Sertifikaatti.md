@@ -146,6 +146,22 @@ Labra `File path traversal, traversal sequences stripped non-recursively` seuras
 
 ## SSTI (Kohta G)
 
+Labrassa `Server-side template injection with information disclosure via user-supplied objects` tuli hyödyntää `server-side template injection`-hyökkäystä ja varastaa sen avulla salainen avain.
+
+Kirjauduin ensin sisään annetuilla tunnuksilla. Löysin myös tuotteiden "edit template" ja "preview napit, jotka antavat vähän lisää tietoa. Jouduin heti tämän jälkeen siirtyä ohjeen pariin, sillä aihepiiri oli itselle varsin tuntematon. 
+
+Videon mukaisesti komennolla `{{a'toUpperCase()}}` saa virheilmoituksen, joka kertoo palvelimen mallin olevan `Django`.
+
+![image](https://github.com/user-attachments/assets/7c986ef5-b68b-4240-be01-6aa5d70e9766)
+
+Djangossa komento `{% debug %}` antoi minun nähdä kaikki saatavilla olevat resurssit.
+
+![image](https://github.com/user-attachments/assets/976b112f-5ab3-4ee9-b69c-18abe75abf90)
+
+![image](https://github.com/user-attachments/assets/1a95bf5c-26e1-4528-9e08-3eed82071f7a)
+
+
+
 ## SSRF (Kohta H)
 
 Labrassa `Basic SSRF against the local server` tuli hyökätä `https://localhost/admin` sivulle hyödyntämällä `SSRF`-hyökkäystä.
@@ -160,12 +176,29 @@ Samaan tapaan kuin aikaisemminkin, voimme lähettää oman pyynnön uusilla para
 
 ![image](https://github.com/user-attachments/assets/7a069824-edb1-4fd0-b80f-143697626dce)
 
-Localhost pyyntö toi minut paikalliselle puolelle, jossa löysin HTML:stä admin paneelin. Komennolla `http://localhost/admin/delete?username=carlos`, saadaan pikaisesti pyyhittyä pois carloksen tili.
+Localhost pyyntö toi minut paikalliselle puolelle, jossa löysin HTML:stä admin paneelin. Komennolla `http://localhost/admin/delete?username=carlos`, saadaan pikaisesti pyyhittyä pois carloksen tili. Nämä toimivat, sillä palvelua ei oltu varmistettu paikallisesti ja sille puolelle pääsi yksinkertaisella väärällä pyynnöllä.
 
 ![image](https://github.com/user-attachments/assets/ed3ad226-e7bf-445e-b134-b6f2a554bdcc)
 
-
 ## XSS (Kohdat I & J)
+
+Labrassa `Reflected XSS into HTML context with nothing encoded` tuli hyödyntää `XSS`-hyökkäystä kutsumalla `alert`-funktiota.
+
+Suuntasin luontaisesti ensimmäiseen syöttökenttään minkä näin ja pastesin komennon `<script>alert(1)</script>` joka kutsuu `alert`-funktiota.
+
+![image](https://github.com/user-attachments/assets/ea1c0751-c166-45aa-a9fd-2a0e9102b624)
+
+![image](https://github.com/user-attachments/assets/e68a28fe-d4d7-4720-a080-8f54f996237c)
+
+Tämä toimi, sillä käyttäjän syötteet pyörivät suoraan javascriptinä eikä niitä suodateta.
+
+Seuraavassa labrassa `Stored XSS into HTML context with nothing encoded` ei ollut samanlaista hakukenttää mihin syöttää komentoa. Klikkaamalla artikkelia sai kuitenkin kommenttikentän näkyviin. Syötteen muodolla ei ole oikeastaan väliä jos haavoittuvuus on yhä sama.
+
+![image](https://github.com/user-attachments/assets/d98619b6-d902-4704-953f-8098704f911d)
+
+![image](https://github.com/user-attachments/assets/28878ff7-a57c-408d-a725-a7c185397c71)
+
+_Hups_
 
 ## Pencode (Kohta K)
 
