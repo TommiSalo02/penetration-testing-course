@@ -144,7 +144,28 @@ Labra `File path traversal, traversal sequences stripped non-recursively` seuras
 
 ![image](https://github.com/user-attachments/assets/763eb9cd-6f3e-4204-ad91-37b54c4d4136)
 
+## SSTI (Kohta G)
 
+## SSRF (Kohta H)
+
+Labrassa `Basic SSRF against the local server` tuli hyökätä `https://localhost/admin` sivulle hyödyntämällä `SSRF`-hyökkäystä.
+
+Tuotetta klikatessa löytyy nappi `check stock`, joka mainitaan tehtävänannossa. `SSRF`-hyökkäyksessä tämänlainen pyyntö ja palaute voi olla varsin hyödyllinen.
+
+![image](https://github.com/user-attachments/assets/e68323cc-a65c-49f1-b7d9-e6d35c54c6e4)
+
+_stockApi-pyyntö_
+
+Samaan tapaan kuin aikaisemminkin, voimme lähettää oman pyynnön uusilla parametreillä. Tässä tapauksessa halusin nähdä pääseekö `http://localhost`-puolelle tätä kautta.
+
+![image](https://github.com/user-attachments/assets/7a069824-edb1-4fd0-b80f-143697626dce)
+
+Localhost pyyntö toi minut paikalliselle puolelle, jossa löysin HTML:stä admin paneelin. Komennolla `http://localhost/admin/delete?username=carlos`, saadaan pikaisesti pyyhittyä pois carloksen tili.
+
+![image](https://github.com/user-attachments/assets/ed3ad226-e7bf-445e-b134-b6f2a554bdcc)
+
+
+## XSS (Kohdat I & J)
 
 ## Pencode (Kohta K)
 
