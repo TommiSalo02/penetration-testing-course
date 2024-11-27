@@ -57,9 +57,16 @@ _OWASP ZAP proxy localhost_
 ![image](https://github.com/user-attachments/assets/7f3bc4ce-42d3-4237-bbeb-9f96e9131c9f)
 
 _Firefox proxy localhost_
-Seuraavaa osuutta varten kytkin netin pois ja tein huolelliset yhteyskokeilut, jotta liikennettä ei karkaisi pois sisäverkosta.
 
+Seuraavaa osuutta varten kytkin netin pois ja tein huolelliset yhteyskokeilut, jotta liikennettä ei karkaisi pois sisäverkosta. Lisäksi seuraavat asetukset FoxyProxyssa varmistavat, että proxya ei käytetä näiden osoitteiden ulkopuolella (localhost ja Metasploitable)
 
+Kokeilin näillä asetuksilla yhteyttä Metasploitableen ja localhostiin. Localhost palautti vastauksen `502`, koska siellä ei ole mitään. Metasploitable taas palautti vastauksen `200`, eli yhteyskokeilu onnistui.
+
+![image](https://github.com/user-attachments/assets/0e4426ae-4830-4af8-bad9-895ca4803e8d)
+
+_Metasploitable ja ZAP_
+
+Pystyin hyödyntämään myös FoxyProxya localhost liikenteen tallettamiseksi.
 
 
 
