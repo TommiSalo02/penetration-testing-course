@@ -6,6 +6,22 @@ Tehtävässä h5 tuli harjoitella...
 
 ## Ennakkomateriaalit
 
+Viikon ennakkomateriaalit sisälsivät kaksi artikkelia OWASP:ilta ja viisi artikkelia PortSwigger:iltä. Artikkelit käsittelivät erilaisia hyökkäysmetodeja, jotka tulivat nopeasti ilmi PortSwigger Labs -harjoituksissa.
+
+OWASP:in artikkelissa "Broken Access Control" käsiteltiin rikkinäisiä käyttöoikeuksia, joka on yksi tietoturvaongelmista OWASP:in TOP 10 -listauksissa. Rikkinäiset käyttöoikeudet tarkoittavat tilanteita, jossa tunnistetut tai tunnistamattomat käyttäjät pääsevät käsiksi sisältöihin, joihin heillä ei pitäisi olla oikeuksia.
+
+OWASP:in artikkelissa "Server Side Request Forgery" käsiteltiin palvelinpyynnön väärennyksiä, joka on samaan tapaan OWASP:in TOP 10:ssä. Palvelinpynnön väärennyksissä palvelin manipuloidaan tekemään pyyntöjä epäautorisoidusta osoitteesta.
+
+PortSwigger:in artikkelissa "Insecure direct object references (IDOR)" käsiteltiin sisäisten tietojen paljastumista "Broken Access Control" -hyökkäyksen kautta. Yleistä on esimerkiksi virhe sivustolla, jossa käyttäjä voi nähdä toisen käyttäjän profiilin muuttamalla osoitteessa `https://insecure-website.com/customer_account?customer_number=132355` muuttujna `customer_number=` eri numeroksi.
+
+PortSwigger:in artikkelissa "Path traversal" käsiteltiin samaan tapaan "Broken Access Control" -hyökkäystä, jossa sivuston piilotettuihin tietoihin voi päästä esimerkiksi lisäämällä osoitteeseeen `/passwd`. Tässä tapauksessa hyökätään tiedostotasolla, kun taas IDOR tähtää verkkosovellustason tietoihin.
+
+PortSwigger:in artikkelissa "Server-side template injection" käsiteltiin hyökkäystä, jossa käyttäjän antama syöte suoritetaan suoraan palvelimella, sen sijaan että sitä käsiteltäisiin datana.
+
+PortSwigger:in artikkelissa "Server-side request forgery (SSRF)" käsiteltiin samaa hyökkäystä kuin OWASP:in artikkelissa.
+
+PortSwigger:in artikkelissa "Cross-site scripting" käsiteltiin hyökkäystä, jossa käyttäjän antama haitallinen syötä suoritetaan muiden käyttäjien selaimessa.
+
 ### Lähteet
 
 https://owasp.org/Top10/A01_2021-Broken_Access_Control/
