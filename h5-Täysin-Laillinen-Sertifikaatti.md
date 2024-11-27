@@ -54,7 +54,7 @@ _FoxyProxy Standard asennettu_
 
 Seuraavaksi nappasin OWASP ZAP -sertifikaatin talteen uuteen kansioon `certificates`. Sertifikaatti löytyi OWASP ZAP:in `network`-asetuksista.
 
-Kävin lisäämässä tämän sertifikaatin Firefoxin sertifikaattimanageriin.
+Kävin lisäämässä tämän sertifikaatin Firefoxin sertifikaattimanageriin. Sertifikaatin avulla Firefox sallii ZAP:in tarkastelemaan ja muuttaamaan liikennettä.
 
 ![image](https://github.com/user-attachments/assets/aefd0368-9ddc-4f56-9725-a379717fcf05)
 
@@ -62,33 +62,27 @@ Lopuksi tuli vielä sallia kuvien sieppaaminen.
 
 ![image](https://github.com/user-attachments/assets/b258d395-7be2-4f69-bd42-076e00eca66c)
 
-Sertifikaatin avulla Firefox sallii ZAP:in tarkastelemaan ja muuttaamaan liikennettä ilman varoituksia.
+ZAP kuuntelee oletusasetuksilla yhteyksien varalta paikallisesti, joka toimii tässä tapauksessa.
 
-Asetin OWASP ZAP:in selaimen proxyksi muokkaamalla sen ja Firefoxin proxyasetukset localhostiksi.
+![image](https://github.com/user-attachments/assets/1fe036e1-0de8-457c-8ad9-177da1ca9de2)
 
-![image](https://github.com/user-attachments/assets/6ccc6d25-f64d-48f0-a31d-ffd2acdd597c)
+Konfiguroin seuraavaksi FoxyProxyn toimimaan ZAP:in kanssa. Voin käyttää `patterns`-osiota hyväksymään liikenteen proxyn kautta vain silloin, kun sen lähde täsmää annettua vaatimusta. Täten vältetään liikenne ZAP:iin ulkoisista lähteistä. 
 
-_OWASP ZAP proxy localhost_
+![image](https://github.com/user-attachments/assets/a006c06d-d175-45b4-b17a-c64b299e070e)
 
-![image](https://github.com/user-attachments/assets/7f3bc4ce-42d3-4237-bbeb-9f96e9131c9f)
+Käynnistin tämän jälkeen selaimen uudelleen ja kokeilin käyttää ZAP:iä localhostin ja Metasploitablen kanssa, sillä nämä ovat turvallisia maaleja. FoxyProxyn `Proxy by Patterns` -asetuksen tulisi suorittaa kaikki muu liikenne ilman proxyä.
 
-_Firefox proxy localhost_
+![image](https://github.com/user-attachments/assets/09ff8a7e-debc-46b3-b12b-7de2c11505fc)
 
-Seuraavaa osuutta varten kytkin netin pois ja tein huolelliset yhteyskokeilut, jotta liikennettä ei karkaisi pois sisäverkosta. Lisäksi seuraavat asetukset FoxyProxyssa varmistavat, että proxya ei käytetä näiden osoitteiden ulkopuolella (localhost ja Metasploitable)
-
-![image](https://github.com/user-attachments/assets/a0bd277c-96cd-4913-97a7-fb82bb07b2b6)
-
-_ProxyFoxy asetukset_
-
-Kokeilin näillä asetuksilla yhteyttä Metasploitableen ja localhostiin. Localhost palautti vastauksen `502`, koska siellä ei ole mitään. Metasploitable taas palautti vastauksen `200`, eli yhteyskokeilu onnistui.
-
-![image](https://github.com/user-attachments/assets/0e4426ae-4830-4af8-bad9-895ca4803e8d)
-
-_Metasploitable ja localhost_
-
-Pystyin hyödyntämään myös FoxyProxya localhost liikenteen tallettamiseksi.
+Lopputuloksissa näkyy, että `localhost` antaa vastauksen `502 - Bad Gateway`, koska siellä ei ole mitään. Metasploitable on antanut muutaman timeoutin, mutta oikean yhteyden kytkiessä se antaa positiivisen `200 - OK` vastauksen. Wikipedia on myös auki, mutta mikään liikenne ei tule sieltä proxyn kautta, sillä sitä ei ole sallitu patterneissa.
 
 ## PortSwigger Labs (Kohdat C-J)
+
+Tässä osiossa tein vaaditut harjoitukset PortSwigger Labs:istä. Tämä on palvelu, jossa voi turvallisesti harjoitella käytännössä erilaisia verkkosovellushyökkäyksiä.
+
+Muokkasin ensin ProxyFoxy:ä siten, että se käyttää Proxya ainoastaan harjoitemaaliympäristössä. Pistin ensin kaikki työkalut pois päältä ja navigoin labratilaan. Labratilojen URL osoite sisältää `web-security-academy.net` ja tätä ei käytetä muualla PortSwiggerin sivuilla. Täten FoxyProxyn asetus `https://*.web-security-academy.net/*` varmistaa, että en vahingossa käytä proxy-yhteyttä muualla kuin labrassa.
+
+
 
 ## Pencode (Kohta K)
 
