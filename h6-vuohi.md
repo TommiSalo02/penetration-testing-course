@@ -9,6 +9,10 @@ Tehtävässä h6 tuli harjoitella tunkeutumistestausta `WebGoat`-harjoitemaalin 
 
 Karvisen artikkeli käsitteli `WebGoat`-harjoitemaalin asentamista omaan käyttöön. Seurasin näitä ohjeita `WebGoat`:tia ladatessa.
 
+### Lähteet
+
+Karvinen 2023: Try Web Hacking on New Webgoat 2023.4. Luettavissa: https://terokarvinen.com/2023/webgoat-2023-4-ethical-web-hacking/. Luettu 4.12.2024
+
 ## WebGoat (Kohta A)
 
 Latasin ensin `java` ja `ufw` -palvelut, jotta voisin pyörittää WebGoattia.
@@ -72,7 +76,7 @@ Toisessa tehtävässä tuli ratkaista "Jerryn" hash käytämällä näitä salai
 
 ### Lähteet
 
-https://www.owasp.org/index.php/Top_10-2017_A5-Broken_Access_Control
+OWASP: Broken Access Control. Luettavissa: https://www.owasp.org/index.php/Top_10-2017_A5-Broken_Access_Control. Luettu 4.12.2024
 
 ## Identity & Auth Failure (Kohta C)
 
@@ -128,7 +132,7 @@ _Vihreää_
 
 ### Lähteet
 
-https://www.hackerone.com/blog-How-To-Server-Side-Request-Forgery-SSRF
+Hackerone: How To: Server-Side Request Forgery. Luettavissa: https://www.hackerone.com/blog-How-To-Server-Side-Request-Forgery-SSRF. Luettu 4.12.2024
 
 ## Client side (Kohta E)
 
@@ -154,7 +158,8 @@ _Hupsis_
 
 _Vihreää_
 
-## (Kohta F)
-
 ## Lähteet
 
+Pohjana Tero Karvinen 2024: Tunkeutumistestaus -kurssi. Luettavissa: https://terokarvinen.com/tunkeutumistestaus/.
+
+Tätä dokumenttia saa kopioida ja muokata GNU General Public License (versio 2 tai uudempi) mukaisesti. http://www.gnu.org/licenses/gpl.html
