@@ -67,7 +67,7 @@ Lopuksi tuli vielä ratkaista kaksi tehtävää liittyen `security by obscurity`
 
 ![image](https://github.com/user-attachments/assets/b6621767-c7d9-406b-bdfe-e3eca5080e48)
 
-Toisessa tehtävässä tuli ratkaista "Jerryn" hash käytämällä näitä salaisia menuja.
+Toisessa tehtävässä tuli ratkaista "Jerryn" hash käytämällä näitä salaisia menuja. En kuitenkaan päässyt tähän pisteeseen neuvojen, selaimen tai GET-pyyntöjen avulla. Kiinnostaa nähdä mikä ratkaisu lienee, sillä niitä löytyy heikosti netistä.
 
 
 ### Lähteet
