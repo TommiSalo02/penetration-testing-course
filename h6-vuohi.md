@@ -1,3 +1,4 @@
+
 # h6 Vuohi
 
 ## Johdanto
@@ -6,9 +7,9 @@ Tehtävässä h6 tuli harjoitella tunkeutumistestausta `WebGoat`-harjoitemaalin 
 
 ## Ennakkomateriaalit
 
-Karvisen artikkeli käsitteli `WebGoat`-harjoitemaalin asentamista omaan käyttöön. 
+Karvisen artikkeli käsitteli `WebGoat`-harjoitemaalin asentamista omaan käyttöön. Seurasin näitä ohjeita `WebGoat`:tia ladatessa.
 
-## WebGoat
+## WebGoat (Kohta A)
 
 Latasin ensin `java` ja `ufw` -palvelut, jotta voisin pyörittää WebGoattia.
 
@@ -23,4 +24,20 @@ Tämän jälkeen kopioin `webgoat-2023.4` paikalliseen käyttöön.
 _webgoat käytössä_
 
 Lopuksi käytin samaa kikkaa kun viimeviikolla Foxyproxyn ja Zap avulla, jolla pystyn tarkkailla ja muokata verkkoliikennettä turvallisesti. Tätä varten tuli myös vaihtaa WebGoatin portti.
+
+![image](https://github.com/user-attachments/assets/10ed7a59-1657-43e2-a52f-21a7f555d0c5)
+
+_Valmiina vaikuttamaan_
+
+## Broken Access Control (Kohta B)
+
+## Identity & Auth Failure (Kohta C)
+
+## Server-side Request Forgery (Kohta D)
+
+## Client side (Kohta E)
+
+## (Kohta F)
+
+## Lähteet
 
