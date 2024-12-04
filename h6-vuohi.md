@@ -31,6 +31,49 @@ _Valmiina vaikuttamaan_
 
 ## Broken Access Control (Kohta B)
 
+Ensimmäisessä kohdassa tuli kaapata toisen käyttäjän keksi ilman autorisointia. Kokeilin ensin kirjautua sisään ja seurasin minkälaisen pyynnön tämä loi. Tässä tapauksessa `hijack_cookie` oli:
+
+`7817068875515383156-1733328556734`
+
+Kokeilin seuraavaksi kirjautua useampaan kertaan, jotta saisin eri keksejä. Sain kuitenkin aina saman aikaisemman keksin. Tehtävän neuvot osiossa ehdotettiin tismalleen saman asian tekemistä, jotta uusia keksejä syntyisi. Jopa `lesson reset` ei ratkaissut tätä ongelmaa. Oletetusti rikkinäisen tehtävän takia siirryin seuraavaan osioon.
+
+Kohdassa `Insecure Direct Object References` tuli hyödyntää IDOR heikkouksia, elikkä syöttää omaa koodia tiedostohakuihin.
+
+Ensin kirjauduin annetuin tunnuksin ja seuraavaksi tuli nimetä kaksi atribuutti, jotka eivät näy käyttäjille. Tässä tapauksessa `userId` ja `role`
+
+![image](https://github.com/user-attachments/assets/6329ba37-0a3b-48da-849c-d46ae6495910)
+ 
+_Atribuutit_
+
+Seuraavassa osassa tuli arvata reitti omalle käyttäjälleen. Aikaisemmasta esimerkistä tiedän, että reitti on `/WebGoat/IDOR/profile`, elikkä todennäköisesti joudun vaan lyömään `userId`:n sen perään.
+
+![image](https://github.com/user-attachments/assets/b3053089-d5fe-4891-8f9b-219393bbb2b5)
+
+_Jep_
+
+Seuraavassa osassa tuli löytää toisen käyttäjän tili ja muokata sitä. Tein pyynnön kuten yleensä ja muokkasin sen ensin vastaamaan omaa profiiliani
+
+![image](https://github.com/user-attachments/assets/72d21996-c3d0-40ed-a2a3-b8f7e5687d68)
+
+![image](https://github.com/user-attachments/assets/52438be5-7781-4eb9-9c9c-7b7b4966681d)
+
+Pienellä manuaalisella fuzzaamisella löytyi toinen profiili. Tätä tuli vielä muokata hieman. En kuitenkaan ymmärtänyt paljoakaan tästä kielestä, joten muokkaaminen osoittautui hankalaksi. Tämä tehtäisiin kuitenkin `POST`/`PUT`/`PATCH` yms. komennolla.
+
+![image](https://github.com/user-attachments/assets/3de575e1-e7d2-4036-9b7d-ca8913b34bb7)
+
+_Vihreää_
+
+Lopuksi tuli vielä ratkaista kaksi tehtävää liittyen `security by obscurity` -aiheeseen. Sillä tarkoitetaan toimintatapaa, jossa "suojataan" tärkeitä komponentteja jättämällä ne ilman linkkejä. Nämä voi kuitenkin löytää tutkimalla esim. `JSON`-vastausta
+
+![image](https://github.com/user-attachments/assets/b6621767-c7d9-406b-bdfe-e3eca5080e48)
+
+Toisessa tehtävässä tuli ratkaista "Jerryn" hash käytämällä näitä salaisia menuja.
+
+
+### Lähteet
+
+https://www.owasp.org/index.php/Top_10-2017_A5-Broken_Access_Control
+
 ## Identity & Auth Failure (Kohta C)
 
 Kohdassa "Authentication Bypass" huonosti ohjelmoidut turvakysymykset johtivat tietoturvahäiriöön. Salasanaa palauttaessa törmäsin kahteen turvakysymykseen. Luontaisesti kokeilin ensin lähettää testivastauksen.
