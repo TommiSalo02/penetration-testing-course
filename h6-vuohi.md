@@ -89,6 +89,28 @@ https://www.hackerone.com/blog-How-To-Server-Side-Request-Forgery-SSRF
 
 ## Client side (Kohta E)
 
+Tässä osiossa hyökkäys tuli tehdä käyttäjän puolelta `HTML`:ää muokkaamalla. Käyttäjällä on useimmiten melko vapaat kädet muokata `HTML`:ää omiin tarkoituksiinsa.
+
+Sivusto koitti rajoittaa luovuuttani, joten muokkasin pyyntöä vähän, sallien kaikkien rajoitusten ohituksen.
+
+![image](https://github.com/user-attachments/assets/4236a877-de41-4232-9585-246286d039b6)
+
+_Taantumuksellista_
+
+![image](https://github.com/user-attachments/assets/2f9b7e7f-a1a5-4eb4-b4d7-e190bb00d29e)
+
+_Paljon parempi_
+
+Toinen osio oli hieman paremmin suojattu, mutta käyttäjä voi melko helposti ohittaa nämä omalla pyynnöllä.
+
+![image](https://github.com/user-attachments/assets/cc384822-f0c9-45a4-a464-b401af151919)
+
+_Hupsis_
+
+![image](https://github.com/user-attachments/assets/857da5a0-2e6e-422f-8b3c-1fcf547ce82a)
+
+_Vihreää_
+
 ## (Kohta F)
 
 ## Lähteet
